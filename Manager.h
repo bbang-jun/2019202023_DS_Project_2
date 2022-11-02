@@ -6,8 +6,8 @@ class Manager
 {
 private:
 	char* cmd;
-	FPGrowth* fpgrowth;
-	BpTree* bptree;
+	FPGrowth* fpgrowth; // FP-Growth
+	BpTree* bptree; // B+-tree
 public:
 	Manager(int threshold, int bpOrder)	//constructor
 	{

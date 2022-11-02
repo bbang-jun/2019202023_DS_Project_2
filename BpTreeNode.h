@@ -4,15 +4,15 @@
 class BpTreeNode
 {
 private:
-	BpTreeNode* pParent;
-	BpTreeNode* pMostLeftChild;
+	BpTreeNode* pParent; // point upper BpTreeNode
+	BpTreeNode* pMostLeftChild; // point most left node in lowerBpTreeNode
 
 public:
-	BpTreeNode() {
+	BpTreeNode() { // constructor
 		pParent = NULL;
 		pMostLeftChild = NULL;
 	}
-	~BpTreeNode() {
+	~BpTreeNode() { // destructor
 
 	}
 

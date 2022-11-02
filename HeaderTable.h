@@ -5,11 +5,11 @@
 class HeaderTable
 {
 private:
-	list<pair<int, string> > indexTable;
-	map<string, FPNode*> dataTable;
+	list<pair<int, string> > indexTable; // list with item frequency and item name(pair)
+	map<string, FPNode*> dataTable; // map cotainer with item information
 public:
-	HeaderTable() { }
-	~HeaderTable();
+	HeaderTable() { } // constructor
+	~HeaderTable(); // destructor
 	void insertTable(char* item, int frequency);
 	list<pair<int, string>> getindexTable() { return indexTable; }
 	map<string, FPNode*> getdataTable() { return dataTable; }

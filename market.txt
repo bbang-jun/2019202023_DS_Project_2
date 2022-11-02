@@ -1,0 +1,6 @@
+eggs    milk
+eggs    milk    energy bar
+eggs    milk    chicken
+cola    pepper
+cola    pepper  chicken
+cola    pepper  energy bar

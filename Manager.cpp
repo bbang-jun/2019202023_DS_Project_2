@@ -11,7 +11,7 @@ void Manager::run(const char* command)
 	while (!fin.eof())
 	{
 		/* You must fill here */
-	
+	}
 	fin.close();
 	return;
 }
@@ -51,7 +51,7 @@ bool Manager::PRINT_RANGE(char* item, int start, int end) {
 }
 
 void Manager::printErrorCode(int n) {				//ERROR CODE PRINT
-	flog << ERROR " << n << " << endl;
+	//flog << ERROR " << n << " << endl;
 	flog << "=======================" << endl << endl;
 }
 
