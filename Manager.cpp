@@ -2,7 +2,9 @@
 
 void Manager::run(const char* command)
 {
+	string commandFromtxt;
 	fin.open(command);
+	flog.open("log.txt", ios::app);
 	if(!fin)
 	{
 		flog << "File Open Error" << endl;
@@ -10,7 +12,35 @@ void Manager::run(const char* command)
 	}
 	while (!fin.eof())
 	{
-		/* You must fill here */
+		getline(fin, commandFromtxt, '\n');
+
+		if(commandFromtxt=="LOAD"){
+			LOAD();
+		}
+		else if(commandFromtxt=="BTLOAD"){
+			BTLOAD();
+		}
+		else if(commandFromtxt=="PRINT_ITEMLIST"){
+			PRINT_ITEMLIST();
+		}
+		else if(commandFromtxt=="PRINT_FPTREE"){
+			PRINT_FPTREE();
+		}
+		else if(commandFromtxt=="PRINT_BPTREE"){
+			//PRINT_BPTREE();
+		}
+		else if(commandFromtxt=="PRINT_CONFIDENCE"){
+			//PRINT_CONFIDENCE();
+		}
+		else if(commandFromtxt=="PRINT_RANGE"){
+			//PRINT_RANGE();
+		}
+		else if(commandFromtxt=="SAVE"){
+			SAVE();
+		}
+		else if(commandFromtxt=="EXIT"){
+
+		}
 	}
 	fin.close();
 	return;
@@ -18,11 +48,33 @@ void Manager::run(const char* command)
 
 bool Manager::LOAD()
 {
+	string item, strtokLine;
+	ifstream market_txt;
+	market_txt.open("market.txt", ios::app);
+
+	if(!market_txt){
+		flog<<"========LOAD========"<<endl;
+		flog<<"ERROR 100"<<endl;
+		flog<<"===================="<<endl<<endl;
+	}
+	else{
+		while(!market_txt.eof()){
+			getline(market_txt, strtokLine, '\n');
+			char temp[200];
+			strcpy(temp, strtokLine.c_str());
+			char* ptr=strtok(temp, "\t");
+			while(true){
+				ptr=strtok(NULL, "\t");
+				if(ptr==NULL)
+					break;
+				item=ptr;
+				flog<<item<<endl;
+			}
+		}
+		flog<<"end"<<endl;
+	}
 	return true;
 }
-
-
-
 
 bool Manager::BTLOAD()
 {
@@ -60,3 +112,6 @@ void Manager::printSuccessCode() {//SUCCESS CODE PRINT
 	flog << "=======================" << endl << endl;
 }
 
+bool Manager::SAVE(){
+
+}

@@ -1,7 +1,8 @@
 #pragma once
 #include "FPGrowth.h"
 #include "BpTree.h"
-
+#include <string>
+#include <string.h>
 class Manager
 {
 private:
@@ -9,9 +10,11 @@ private:
 	FPGrowth* fpgrowth; // FP-Growth
 	BpTree* bptree; // B+-tree
 public:
+
 	Manager(int threshold, int bpOrder)	//constructor
 	{
 		/* You must fill here */
+		//fpgrowth->
 	}
 
 
@@ -38,6 +41,8 @@ public:
 
 	void printErrorCode(int n);
 	void printSuccessCode();
+
+	bool SAVE();
 
 };
 
