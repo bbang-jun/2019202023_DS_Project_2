@@ -14,7 +14,7 @@ public:
 	Manager(int threshold, int bpOrder)	//constructor
 	{
 		/* You must fill here */
-		//fpgrowth->
+		fpgrowth = new FPGrowth(&flog, threshold);
 	}
 
 
@@ -39,7 +39,7 @@ public:
 	bool PRINT_BPTREE(char* item, int min_frequency);
 
 
-	void printErrorCode(int n);
+	void printErrorCode(string command, int code);
 	void printSuccessCode();
 
 	bool SAVE();

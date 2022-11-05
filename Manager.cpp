@@ -48,8 +48,10 @@ void Manager::run(const char* command)
 
 bool Manager::LOAD()
 {
-	string item, strtokLine;
+	string  strtokLine;
 	ifstream market_txt;
+	int tempFrequency;
+
 	market_txt.open("market.txt", ios::app);
 
 	if(!market_txt){
@@ -62,17 +64,22 @@ bool Manager::LOAD()
 			getline(market_txt, strtokLine, '\n');
 			char temp[200];
 			strcpy(temp, strtokLine.c_str());
-			char* ptr=strtok(temp, "\t");
+			char* charItem=strtok(temp, "\t");
 			while(true){
-				ptr=strtok(NULL, "\t");
-				if(ptr==NULL)
+				charItem=strtok(NULL, "\t");
+				if(charItem==NULL)
 					break;
-				item=ptr;
-				flog<<item<<endl;
+				tempFrequency = fpgrowth->getHeaderTable()->find_frequency(charItem);
+				fpgrowth->createTable(charItem, tempFrequency);
 			}
 		}
-		flog<<"end"<<endl;
+		fpgrowth->getHeaderTable()->descendingIndexTable();
 	}
+
+
+
+
+
 	return true;
 }
 
@@ -84,6 +91,9 @@ bool Manager::BTLOAD()
 
 bool Manager::PRINT_ITEMLIST() {
 	
+	fpgrowth->getHeaderTable()->PRINT_ITEMLIST();
+
+	return true;
 }
 
 bool Manager::PRINT_FPTREE() {
@@ -102,8 +112,8 @@ bool Manager::PRINT_RANGE(char* item, int start, int end) {
 	
 }
 
-void Manager::printErrorCode(int n) {				//ERROR CODE PRINT
-	//flog << ERROR " << n << " << endl;
+void Manager::printErrorCode(string command, int code) {				//ERROR CODE PRINT
+	flog << "ERROR " << code << endl;
 	flog << "=======================" << endl << endl;
 }
 
