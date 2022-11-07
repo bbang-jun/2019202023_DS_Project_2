@@ -11,10 +11,13 @@ private:
 	BpTree* bptree; // B+-tree
 public:
 
+	ofstream* fout;
+	ofstream flog;
+	ifstream fin;
 	Manager(int threshold, int bpOrder)	//constructor
 	{
 		/* You must fill here */
-		fpgrowth = new FPGrowth(&flog, threshold);
+		fpgrowth = new FPGrowth(fout, threshold);
 	}
 
 
@@ -23,8 +26,6 @@ public:
 		/* You must fill here */
 	}
 
-	ifstream fin;
-	ofstream flog;
 	
 
 	void run(const char* command);

@@ -76,9 +76,37 @@ bool Manager::LOAD()
 		fpgrowth->getHeaderTable()->descendingIndexTable();
 	}
 
+	market_txt.close();
+
+	market_txt.open("market.txt", ios::app);
+		if(!market_txt){
+		flog<<"========LOAD========"<<endl;
+		flog<<"ERROR 100"<<endl;
+		flog<<"===================="<<endl<<endl;
+	}
+	else{
+		while(!market_txt.eof()){
+			list<string> transactionList;
+			getline(market_txt, strtokLine, '\n');
+			char temp[200];
+			strcpy(temp, strtokLine.c_str());
+			char* charItem=strtok(temp, "\t");
+			while(true){
+				transactionList.push_back(charItem);
+				charItem=strtok(NULL, "\t");
+				if(charItem==NULL)
+					break;
+				
+			}
+			transactionList.sort();
+			fpgrowth->createFPtree(fpgrowth->getTree(), fpgrowth->getHeaderTable(), transactionList, 1);
+			transactionList.clear();
+		}
+	}
 
 
 
+//FPNode* root, HeaderTable* table, list<string> item_array, int frequency
 
 	return true;
 }
@@ -92,6 +120,8 @@ bool Manager::BTLOAD()
 bool Manager::PRINT_ITEMLIST() {
 	
 	fpgrowth->getHeaderTable()->PRINT_ITEMLIST();
+
+	fpgrowth->getHeaderTable()->first();
 
 	return true;
 }

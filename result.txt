@@ -93,4 +93,27 @@
 2	protein bar	soup
 2	salmon	spaghetti
 4	soup	spaghetti
-2	spaghetti	white wine
+2	spaghetti	white wine성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공
+성공

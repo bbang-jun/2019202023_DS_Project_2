@@ -11,37 +11,38 @@ void HeaderTable::insertTable(string item, int frequency) {
 	} 
 	else
 	{
-		int i;
+		int i=0;
 		int indexTableSize = indexTable.size();
 		list<pair<int, string>> tempIndexTable;
 		tempIndexTable=indexTable;
 		pair<int, string> tempPair;
 
-		for (i = 0; i < indexTableSize; i++)
-		{
+		while(i!=indexTableSize){
 			tempPair=tempIndexTable.front(); //temppair is the front pair of tempindex
 			tempIndexTable.pop_front(); //pop the tempindex
 			if (tempPair.second == item) //if temppair's second is same with item
 				tempPair.first+=1; //add frequency
 			tempIndexTable.push_back(make_pair(tempPair.first, tempPair.second)); //push the temppair into tempindex
+
+			i++;
 		}
+
 		indexTable=tempIndexTable;
 	}
-	//FPNode* pointerNode = new FPNode;
+	FPNode* Pointer = new FPNode;
 
-	// dataTable.insert(make_pair(item, pointerNode)); //insert the pair of str and pointerNode to dataTable
+	dataTable.insert(make_pair(item, Pointer)); //insert the pair of str and pointerNode to dataTable
 }
 
 int HeaderTable::find_frequency(string item){
 	int frequency = 0;
-	int i;
+	int i=0;
 	int indexTableSize = indexTable.size();
 	list<pair <int, string>> tempIndexTable;
 	tempIndexTable=indexTable;
 	pair<int, string> tempPair;
 
-	for (i = 0; i < indexTableSize; i++)
-	{
+	while(i!=indexTableSize){
 		tempPair=tempIndexTable.front();
 		if (tempPair.second == item) 
 		{
@@ -51,7 +52,9 @@ int HeaderTable::find_frequency(string item){
 		}
 		else 
 			tempIndexTable.pop_front(); 
+		i++;
 	}
+
 
 	return frequency; 
 }
@@ -71,5 +74,12 @@ void HeaderTable::PRINT_ITEMLIST(){
 		list<pair<int, string>>::iterator iter;
 		for(auto iter= indexTable.begin(); iter!=indexTable.end(); iter++){
 			flog<<iter->first<<" "<<iter->second<<endl;
+		}
+}
+
+void HeaderTable::first(){
+		map<string, FPNode*>::iterator iter;
+		for(auto iter= dataTable.begin(); iter!=dataTable.end(); iter++){
+			flog<<iter->first<<endl;
 		}
 }

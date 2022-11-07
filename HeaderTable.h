@@ -21,6 +21,7 @@ public:
 	int find_frequency(string item);
 	bool find_item(string item);
 	void PRINT_ITEMLIST();
+	void first();
 };
 
 

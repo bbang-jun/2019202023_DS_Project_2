@@ -12,6 +12,7 @@
         "initializer_list": "cpp",
         "fstream": "cpp",
         "utility": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "iostream": "cpp"
     }
 }
