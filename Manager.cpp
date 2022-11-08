@@ -66,14 +66,16 @@ bool Manager::LOAD()
 			strcpy(temp, strtokLine.c_str());
 			char* charItem=strtok(temp, "\t");
 			while(true){
+				tempFrequency = fpgrowth->getHeaderTable()->find_frequency(charItem);
+				fpgrowth->createTable(charItem, tempFrequency);
 				charItem=strtok(NULL, "\t");
 				if(charItem==NULL)
 					break;
-				tempFrequency = fpgrowth->getHeaderTable()->find_frequency(charItem);
-				fpgrowth->createTable(charItem, tempFrequency);
 			}
 		}
 		fpgrowth->getHeaderTable()->descendingIndexTable();
+		fpgrowth->createThIndexTable(); // threshold 이상인 것만 남기는 table 생성
+		fpgrowth->getHeaderTable()->makeDataTable();
 	}
 
 	market_txt.close();
@@ -98,10 +100,12 @@ bool Manager::LOAD()
 					break;
 				
 			}
-			transactionList.sort();
+			//transactionList.sort();
 			fpgrowth->createFPtree(fpgrowth->getTree(), fpgrowth->getHeaderTable(), transactionList, 1);
 			transactionList.clear();
 		}
+
+		//fpgrowth->getHeaderTable()->first();
 	}
 
 
@@ -119,9 +123,11 @@ bool Manager::BTLOAD()
 
 bool Manager::PRINT_ITEMLIST() {
 	
-	fpgrowth->getHeaderTable()->PRINT_ITEMLIST();
+	fpgrowth->getHeaderTable()->PRINT_ITEMLIST(); // indextable 출력
 
-	fpgrowth->getHeaderTable()->first();
+	fpgrowth->getHeaderTable()->printThresholdTable(); // 쓰레쉬홀드 제거된거 출력
+
+	fpgrowth->getHeaderTable()->first(); // dataTable 출력
 
 	return true;
 }

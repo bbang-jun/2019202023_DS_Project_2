@@ -24,6 +24,7 @@ public:
 	}
 	~FPGrowth(); // desctructor
 	void createTable(string item, int frequency) { table->insertTable(item, frequency); } // create index table, data table
+	void createThIndexTable() { table->makeThIndexTable(threshold); }
 	void createFPtree(FPNode* root, HeaderTable* table, list<string> item_array, int frequency); // create FP tree
 	void connectNode(HeaderTable* table, string item, FPNode* node); // connect the node in FP tree
 

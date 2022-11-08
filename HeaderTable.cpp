@@ -23,15 +23,48 @@ void HeaderTable::insertTable(string item, int frequency) {
 			if (tempPair.second == item) //if temppair's second is same with item
 				tempPair.first+=1; //add frequency
 			tempIndexTable.push_back(make_pair(tempPair.first, tempPair.second)); //push the temppair into tempindex
-
 			i++;
 		}
 
 		indexTable=tempIndexTable;
+		tempIndexTable.clear();
 	}
-	FPNode* Pointer = new FPNode;
+}
 
-	dataTable.insert(make_pair(item, Pointer)); //insert the pair of str and pointerNode to dataTable
+void HeaderTable::makeThIndexTable(int threshold){
+	int i=0;
+	int indexTableSize = indexTable.size();
+	list<pair<int, string>> tempIndexTable;
+	tempIndexTable=indexTable;
+	pair<int, string> tempPair;
+
+	while(i!=indexTableSize){
+		tempPair=tempIndexTable.front(); //temppair is the front pair of tempindex
+		tempIndexTable.pop_front(); //pop the tempindex
+		if(tempPair.first>=threshold){
+			thIndexTable.push_back(make_pair(tempPair.first, tempPair.second));
+		}
+		i++;
+	}
+	tempIndexTable.clear();
+}
+
+void HeaderTable:: makeDataTable(){
+
+	FPNode* Pointer = new FPNode;
+	int i=0;
+	int ThIndexTableSize = thIndexTable.size();
+	list<pair<int, string>> tempIndexTable;
+	tempIndexTable=thIndexTable;
+	pair<int, string> tempPair;
+
+	while(i!=ThIndexTableSize){
+		tempPair=tempIndexTable.front(); //temppair is the front pair of tempindex
+		tempIndexTable.pop_front(); //pop the tempindex
+		dataTable.insert(make_pair(tempPair.second, Pointer));
+		 // map<string, FPNode*>
+		i++;
+	}
 }
 
 int HeaderTable::find_frequency(string item){
@@ -77,9 +110,16 @@ void HeaderTable::PRINT_ITEMLIST(){
 		}
 }
 
+void HeaderTable::printThresholdTable(){
+		list<pair<int, string>>::iterator iter;
+		for(auto iter= thIndexTable.begin(); iter!=thIndexTable.end(); iter++){
+			flog<<iter->first<<" "<<iter->second<<endl;
+		}
+}
+
 void HeaderTable::first(){
 		map<string, FPNode*>::iterator iter;
 		for(auto iter= dataTable.begin(); iter!=dataTable.end(); iter++){
-			flog<<iter->first<<endl;
-		}
+			flog<<iter->first<<" "<<endl;
+		}//iter->second->getNext()->getFrequency()<<
 }
