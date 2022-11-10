@@ -20,9 +20,12 @@ public:
 	list<pair<int, string>> getThIndexTable() { return thIndexTable; }
 	map<string, FPNode*> getdataTable() { return dataTable; }
 	FPNode* getNode(string item) { return dataTable.find(item)->second; }
-	void descendingIndexTable() { indexTable.sort(greater<pair<int, string>>()); } // frequency 내림차순 정렬
-	void ascendingIndexTable() { indexTable.sort(); }
-	void descendingThIndexTable() { thIndexTable.sort(greater<pair<int, string>>()); } // frequency 내림차순 정렬
+	void descendingIndexTable() { indexTable.sort(greater<pair<int, string>>()); thIndexTable.sort(greater<pair<int, string>>());} // frequency 내림차순 정렬
+	void ascendingIndexTable() { indexTable.sort(); thIndexTable.sort(); }
+	void descendingThIndexTable() { 
+		thIndexTable.sort(greater<pair<int, string>>()); 
+		//thIndexTable.sort(greater<pair<string, int>>());
+		} // frequency 내림차순 정렬
 	void ascendingThIndexTable() { thIndexTable.sort(); }
 	int find_frequency(string item);
 	bool find_item(string item);

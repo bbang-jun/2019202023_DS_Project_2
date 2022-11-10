@@ -28,6 +28,9 @@ public:
 	void createFPtree(FPNode* root, HeaderTable* table, list<string> item_array, int frequency); // create FP tree
 	void connectNode(HeaderTable* table, string item, FPNode* node); // connect the node in FP tree
 
+
+	list<string> makeOrderedTransaction(list<string> item_array);
+
 	
 	void frequenctPatternSetting() { 
 		table->ascendingIndexTable();

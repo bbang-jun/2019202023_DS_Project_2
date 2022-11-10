@@ -1,0 +1,12 @@
+========PRINT_FPTREE========
+{StandardItem,Frequency} (Path_Item,Frequency)
+{eggs, 4}
+(eggs, 1) 
+(eggs, 2) (milk, 3) 
+(eggs, 1) (dar, 5) 
+{milk, 4}
+(milk, 3) 
+(milk, 1) (dar, 5) 
+{dar, 5}
+(dar, 5) 
+=========================

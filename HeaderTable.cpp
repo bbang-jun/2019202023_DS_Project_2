@@ -51,7 +51,6 @@ void HeaderTable::makeThIndexTable(int threshold){
 
 void HeaderTable:: makeDataTable(){
 
-	FPNode* Pointer = new FPNode;
 	int i=0;
 	int ThIndexTableSize = thIndexTable.size();
 	list<pair<int, string>> tempIndexTable;
@@ -59,6 +58,7 @@ void HeaderTable:: makeDataTable(){
 	pair<int, string> tempPair;
 
 	while(i!=ThIndexTableSize){
+		FPNode* Pointer = new FPNode;
 		tempPair=tempIndexTable.front(); //temppair is the front pair of tempindex
 		tempIndexTable.pop_front(); //pop the tempindex
 		dataTable.insert(make_pair(tempPair.second, Pointer));
@@ -104,6 +104,7 @@ bool HeaderTable::find_item(string item){
 }
 
 void HeaderTable::PRINT_ITEMLIST(){
+		flog<<"index table 출력"<<endl;
 		list<pair<int, string>>::iterator iter;
 		for(auto iter= indexTable.begin(); iter!=indexTable.end(); iter++){
 			flog<<iter->first<<" "<<iter->second<<endl;
@@ -111,6 +112,7 @@ void HeaderTable::PRINT_ITEMLIST(){
 }
 
 void HeaderTable::printThresholdTable(){
+		flog<<"threshold로 거른 index table 출력"<<endl;
 		list<pair<int, string>>::iterator iter;
 		for(auto iter= thIndexTable.begin(); iter!=thIndexTable.end(); iter++){
 			flog<<iter->first<<" "<<iter->second<<endl;
@@ -118,8 +120,9 @@ void HeaderTable::printThresholdTable(){
 }
 
 void HeaderTable::first(){
+		flog<<"dataTable 출력"<<endl;
 		map<string, FPNode*>::iterator iter;
 		for(auto iter= dataTable.begin(); iter!=dataTable.end(); iter++){
-			flog<<iter->first<<" "<<endl;
+			flog<<iter->first<<" "<<iter->second->getNext()->getFrequency()<<endl;
 		}//iter->second->getNext()->getFrequency()<<
 }

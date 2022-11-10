@@ -20,4 +20,9 @@ FPNode* FPNode::getChildrenNode(string item) {
 	return findNode;
 }
 
-
+// string FPNode::getItemName(FPNode* node) {
+// 	map<string, FPNode*>::iterator it = children.find(node);
+// 	if (it == children.end()) return NULL;
+// 	FPNode* findNode = it->second;
+// 	return findNode;
+// }

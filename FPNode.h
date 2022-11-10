@@ -26,4 +26,5 @@ public:
 	FPNode* getNext() { return next; }
 	FPNode* getChildrenNode(string item);
 	map<string, FPNode*> getChildren() { return children; }
+	string getItemName(FPNode* node);
 };

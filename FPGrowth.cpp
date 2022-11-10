@@ -8,20 +8,12 @@ FPGrowth::~FPGrowth() {
 void FPGrowth::createFPtree(FPNode* root, HeaderTable* table, list<string> item_array, int frequency) {
 
 	FPNode*curNode=root; // 현재 노드는 root
-	map<string, FPNode*>::iterator mapiter;
-	list<pair<int,string>>::iterator indexTableIter;
-	list<string>::iterator item_array_Iter;
+	map<string, FPNode*>::iterator dataTableIter; // dataTable의 반복자
+	list<pair<int,string>>::iterator indexTableIter; // indexTable의 반복자
+	list<string>::iterator item_array_Iter; 
 
 	while(item_array.empty()!=true){ // while item_array is not empty
-		//for(item_array_Iter=item_array.begin(); item_array_Iter!=item_array.end(); item_array_Iter++){
-			//if(item_array_Iter)
-		//}
 
-		//for(indexTableIter=table->getindexTable().begin(); indexTableIter!=table->getindexTable().end(); indexTableIter++){
-
-		//}
-
-		//if(table->getindexTable().find(item_array.front())->first)
 		FPNode*findChildren = curNode->getChildrenNode(item_array.front());
 		if(findChildren==NULL){  // if find the first item name in item_array, but it is not found
 			FPNode*newNode=new FPNode;
@@ -29,50 +21,48 @@ void FPGrowth::createFPtree(FPNode* root, HeaderTable* table, list<string> item_
 			newNode->setParent(curNode);
 			curNode->pushchildren(item_array.front(), newNode); // push the children(map)
 			
-			if(table->getdataTable().find(item_array.front())!=table->getdataTable().end()){
+			int i=0;
+			int dataTableSize=getHeaderTable()->getdataTable().size();
+			map<string, FPNode*> tempDataTable=getHeaderTable()->getdataTable();
 
-			//list<string> temp_item_array=item_array;
-			for(auto const &pair: table->getdataTable()){
-				if(item_array.front()==pair.first){
-						FPNode* temp=pair.second;
-						if(temp->getNext()==NULL){
-							temp->setNext(newNode);
-						}
+			while(i!=dataTableSize){
+				if(tempDataTable.begin()->first==item_array.front()){
+
+					FPNode* temp=table->getdataTable().find(item_array.front())->second;
+					if(temp->getNext()==NULL){
+						temp->setNext(newNode); // dataTable의 Pointer가 처음 들어온 각 상품 노드를 가리킴
 					}
+					else{
+						while(temp->getNext()!=NULL) // dataTable의 각 item 이름을 가진 fp-tree의 item node들과 서로 연결
+							temp=temp->getNext();
+						temp->setNext(newNode);
+					}
+				}
+				tempDataTable.erase(tempDataTable.begin());
+				i++;
 			}
-				// for(mapiter=table->getdataTable().begin(); mapiter!=table->getdataTable().end(); mapiter++){
-				// 	//FPNode*temp=table->getdataTable().find(temp_item_array.front())->second;
-				// 	if(item_array.front()==mapiter->first){
-				// 		FPNode* temp=mapiter->second;
-				// 		if(temp->getNext()==NULL){
-				// 			temp->setNext(newNode);
-				// 		}
-				// 	}
-
-				// }
-			}
-
-			list<string>::iterator iter=item_array.begin();
 			
 			item_array.pop_front(); // push after, pop front
 			curNode=newNode;
-			//cout<<*iter<<" "<<curNode->getFrequency()<<"->"; white meal이 이상하게 깨져서 나오는 cout들.
 		}
 		else{ // if alreay insert
 			findChildren->updateFrequency(frequency); // update frequency
-			list<string>::iterator iter=item_array.begin();
-			
-			item_array.pop_front(); // update after, pop front
 			curNode=findChildren;
-			//cout<<*iter<<" "<<curNode->getFrequency()<<"->";
+			FPNode*newNode=new FPNode;
+			newNode->updateFrequency(frequency);
+			newNode->setParent(curNode);
+			curNode->pushchildren(item_array.front(), newNode); // push the children(map)
+			item_array.pop_front(); // update after, pop front
 		}
 	}
-	//cout<<endl;
-	//cout<<"======"<<endl;
 }
 
 // connect with table and node
 void FPGrowth::connectNode(HeaderTable* table, string item, FPNode* node) {
+	
+}
+
+list<string> FPGrowth::makeOrderedTransaction(list<string> item_array){
 	
 }
 
