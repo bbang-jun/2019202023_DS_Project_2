@@ -104,14 +104,15 @@ bool HeaderTable::find_item(string item){
 }
 
 void HeaderTable::PRINT_ITEMLIST(){
-		flog<<"index table 출력"<<endl;
-		list<pair<int, string>>::iterator iter;
-		for(auto iter= indexTable.begin(); iter!=indexTable.end(); iter++){
-			flog<<iter->first<<" "<<iter->second<<endl;
-		}
+	flog<<"index table 출력"<<endl;
+	list<pair<int, string>>::iterator iter;
+	for(auto iter= indexTable.begin(); iter!=indexTable.end(); iter++){
+		flog<<iter->first<<" "<<iter->second<<endl;
+	}
 }
 
 void HeaderTable::printThresholdTable(){
+	thIndexTable.sort(greater<pair<int, string>>());
 		flog<<"threshold로 거른 index table 출력"<<endl;
 		list<pair<int, string>>::iterator iter;
 		for(auto iter= thIndexTable.begin(); iter!=thIndexTable.end(); iter++){

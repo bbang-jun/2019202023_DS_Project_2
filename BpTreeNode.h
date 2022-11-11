@@ -12,7 +12,7 @@ public:
 		pParent = NULL;
 		pMostLeftChild = NULL;
 	}
-	~BpTreeNode() { // destructor
+		~BpTreeNode() { // destructor
 
 	}
 
