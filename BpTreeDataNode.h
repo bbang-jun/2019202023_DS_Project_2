@@ -5,9 +5,9 @@
 class BpTreeDataNode : public BpTreeNode
 {
 private:
-	map <int, FrequentPatternNode*> mapData; // map container with Frequent Pattern in frequency
-	BpTreeNode* pNext; // next BpTreeNode
-	BpTreeNode* pPrev; // previous BpTreeNode
+	map <int, FrequentPatternNode*> mapData;
+	BpTreeNode* pNext;
+	BpTreeNode* pPrev;
 public:
 	BpTreeDataNode() {
 		pNext = NULL;

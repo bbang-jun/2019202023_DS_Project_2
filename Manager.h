@@ -18,6 +18,7 @@ public:
 	{
 		/* You must fill here */
 		fpgrowth = new FPGrowth(fout, threshold);
+		bptree = new BpTree(fout, bpOrder);
 	}
 
 

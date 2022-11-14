@@ -8,8 +8,8 @@
 
 class BpTree {
 private:
-	BpTreeNode* root; // root of B+-tree
-	int			order;		// m children(degree of B+-tree)
+	BpTreeNode* root;
+	int			order;		// m children
 	ofstream* fout;
 public:
 	BpTree(ofstream *fout, int order = 3) {

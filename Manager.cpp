@@ -13,6 +13,14 @@ void Manager::run(const char* command)
 	while (!fin.eof())
 	{
 		getline(fin, commandFromtxt, '\n');
+		// if(commandFromtxt==NULL)
+		// 	break;
+		char factor[100];
+		if(commandFromtxt.empty()==true)
+			break;
+		strcpy(factor, commandFromtxt.c_str());
+		char *ptr = strtok(factor, " ");
+		commandFromtxt=ptr;
 
 		if(commandFromtxt=="LOAD"){
 			LOAD();
@@ -27,7 +35,12 @@ void Manager::run(const char* command)
 			PRINT_FPTREE();
 		}
 		else if(commandFromtxt=="PRINT_BPTREE"){
-			//PRINT_BPTREE();
+			char *tokItem, *tokLeastFrequency;
+    		tokItem = strtok(NULL, " ");
+   	 		tokLeastFrequency = strtok(NULL, "");
+			int frequency = atoi(tokLeastFrequency);
+
+			PRINT_BPTREE(tokItem, frequency);
 		}
 		else if(commandFromtxt=="PRINT_CONFIDENCE"){
 			//PRINT_CONFIDENCE();
@@ -144,7 +157,41 @@ bool Manager::LOAD()
 
 bool Manager::BTLOAD()
 {
-	
+	string  strtokLine;
+	ifstream result_txt;
+	set<string> itemset;
+
+	result_txt.open("result.txt", ios::app);
+
+	if(!result_txt){
+		flog<<"========BTLOAD========"<<endl;
+		flog<<"ERROR 200"<<endl;
+		flog<<"===================="<<endl<<endl;
+	}
+	else{
+		while(!result_txt.eof()){
+			getline(result_txt, strtokLine, '\n');
+			string judgeEnd=strtokLine;
+			if(judgeEnd.empty()==true){
+				break;
+			}
+			char temp[200];
+			strcpy(temp, strtokLine.c_str());
+			char* charItem=strtok(temp, "\t");
+			int frequency = atoi(charItem);
+			while(true){
+				charItem=strtok(NULL, "\t");
+
+				if(charItem==NULL)
+					break;
+				itemset.insert(charItem);
+			}
+			bptree->Insert(frequency, itemset);
+			itemset.clear();
+		}
+	}
+
+	result_txt.close();
 	return true;
 }
 
@@ -172,7 +219,7 @@ bool Manager::PRINT_FPTREE() { // for print FPTREE
 	ThIndexTable.sort(); // sort thIndexTable
 
 	FPNode*Pointer; // data table's pointer node
-	FPNode*pathNode;
+	FPNode*pathNode;                
 	FPNode*moveNode;
 
 	flog<<"========PRINT_FPTREE========"<<endl;
@@ -210,7 +257,34 @@ bool Manager::PRINT_FPTREE() { // for print FPTREE
 }
 
 bool Manager::PRINT_BPTREE(char* item, int min_frequency) {
-	
+	ofstream flog;
+	flog.open("log.txt", ofstream::app);
+	BpTreeNode* moveNode;
+
+	multimap<int, set<string> >::iterator frequentIter;
+	set<string>::iterator stringIter;
+
+	moveNode = bptree->getRoot();
+	while (moveNode->getMostLeftChild() != NULL) { //go down til we meet data node (not index node)
+		moveNode = moveNode->getMostLeftChild();
+	}
+	flog << "====== PRINT_BPTREE ======" << endl;
+	while (moveNode != NULL) { // map<int, FrequentPatternNode*>*
+		for (auto iter = moveNode->getDataMap()->begin(); iter != moveNode->getDataMap()->end(); iter++) {
+			for(frequentIter=iter->second->getList().begin(); frequentIter!=iter->second->getList().end(); frequentIter++){
+				flog << "{";
+				for(stringIter=frequentIter->second.begin(); stringIter!=frequentIter->second.end(); stringIter++){
+					flog<< *stringIter << ","; //print log.txt
+				}
+				flog <<"} ";
+			}
+			flog<<iter->first<<endl;
+		}
+		moveNode = moveNode->getNext(); //move moveNode to next
+	}
+	flog << "======================" << endl<<endl;
+	flog.close();
+	delete moveNode;
 }
 
 bool Manager::PRINT_CONFIDENCE(char* item, double rate) {
