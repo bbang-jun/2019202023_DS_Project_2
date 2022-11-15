@@ -1,4 +1,5 @@
 #include "BpTree.h"
+#include<vector>
 
 bool BpTree::Insert(int frequency, set<string> itemset) { // 2	milk	eggs
 	if(itemset.size()<=1){ // 공집합이거나 원소가 하나인 집합 저장x
@@ -22,21 +23,32 @@ bool BpTree::Insert(int frequency, set<string> itemset) { // 2	milk	eggs
 			//map<int, FrequentPatternNode*>::iterator dataIter;
 			
 			curNode=root;
-			while(curNode->getMostLeftChild()!=NULL){ // 가장 왼쪽 dataNode
-				curNode=curNode->getMostLeftChild();
+			
+			while(curNode->getMostLeftChild()!=NULL){
+				map <int, BpTreeNode*>::iterator iter;
+
+				for(iter=curNode->getIndexMap()->begin(); iter!=curNode->getIndexMap()->end(); iter++){
+					if(iter->first>=frequency){
+						curNode=curNode->getMostLeftChild();
+						break;
+					}
+					else if(iter->first<frequency){
+						curNode=iter->second;
+						break;
+					}
+				}
+				if(curNode->getMostLeftChild()==NULL)
+					break;
 			}
 			
 			FrequentPatternNode * newFqptNode = new FrequentPatternNode;
 			newFqptNode->InsertList(itemset); // FrequentPatterNode의 1번째 인자와 2번째 인자 저장
 
-			if(excessDataNode(curNode)==false){ // order-1 이하이면 삽입
-				curNode->insertDataMap(frequency, newFqptNode);
-			}
-			else{ // oder-1을 초과하면 스플릿
-				curNode->insertDataMap(frequency, newFqptNode);
-				//splitDataNode(curNode);
-			}
-			
+			curNode->insertDataMap(frequency, newFqptNode);
+
+			if(excessDataNode(curNode)==true){
+				splitDataNode(curNode);
+			}	
 		}
 		else{ // data 노드 목록 중 frequency와 일치하는 dataNode가 있는 경우
 			BpTreeNode* searchData = searchDataNode(frequency); // 같은 frequency면 frequent patterNode에 삽입
@@ -57,6 +69,12 @@ bool BpTree::Insert(int frequency, set<string> itemset) { // 2	milk	eggs
 
 BpTreeNode* BpTree::searchDataNode(int n) {
 	BpTreeNode* pCur = root;
+
+	while(pCur!=NULL){
+		if(pCur->getMostLeftChild()==NULL)
+			break;
+		pCur=pCur->getMostLeftChild();
+	}
 
 	map<int, FrequentPatternNode*>::iterator dataIter=pCur->getDataMap()->begin();
 
@@ -88,45 +106,55 @@ BpTreeNode* BpTree::searchDataNode(int n) {
 }
 
 void BpTree::splitDataNode(BpTreeNode* pDataNode) {
+
 	BpTreeDataNode* newDataNode = new BpTreeDataNode;
-	BpTreeIndexNode* newIndexNode = new BpTreeIndexNode;
-	map<int, FrequentPatternNode*>* pData = pDataNode->getDataMap();
-	int index = 1;
-	int first, second;
-	BpTreeNode* originNextNode = new BpTreeNode;
-	originNextNode = pDataNode->getNext(); //originNextNode=pDataNode's next node
+	BpTreeIndexNode* newIndexNode;
+	int splitIndex = ((order-1)/2.0)+1;
+	int compareIndex=1;
+	vector<int> v;
+	bool splitIndexNodes = false;
 
-	for (auto iter = pData->begin(); iter != pData->end(); iter++) {
-		if (index == 2) { //if index==2 (after executing loop once)
-			newDataNode->insertDataMap(iter->first, iter->second); //insert newDataNode to data node
-			if (pDataNode->getParent() != NULL) { //if pDataNode's parent exists
-				pDataNode->getParent()->insertIndexMap(iter->first, newDataNode); //insert to pDataNode's parent(index node)
-				newDataNode->setParent(pDataNode->getParent()); //set newDataNode's parent as pDataNode's parent
+	map<int, FrequentPatternNode*>::iterator iter;
+
+	// 새로 생긴 dataNode에 split할 index 이후의 요소들 삽입
+	for(iter=pDataNode->getDataMap()->begin(); iter!=pDataNode->getDataMap()->end(); iter++){
+		if(compareIndex==splitIndex){ 
+			if(pDataNode->getParent()!=NULL){ // 스플릿할 노드의 부모(인덱스 노드)가 존재하는 경우 그 노드에 
+				//newIndexNode=pDataNode->getParent();
+				pDataNode->getParent()->insertIndexMap(iter->first, newDataNode); // frequency와 가르키기 위한 새로 생긴 데이터 노드로 insert
 			}
-			else { //if pDataNode's parent doesn't exist
-				newIndexNode->insertIndexMap(iter->first, newDataNode); //insert newIndexNode as index node
-				pDataNode->setParent(newIndexNode); //set pDataNode's parent as newIndexNode
-				newIndexNode->setMostLeftChild(pDataNode); //set newIndexNode's most Left Child as pDataNode
-				newDataNode->setParent(newIndexNode); //set newDataNode's parent as newIndexNode
+			else{
+				newIndexNode=new BpTreeIndexNode;
+				newIndexNode->insertIndexMap(iter->first, newDataNode); // indexNode insert
 			}
-			first = iter->first; //store iter->first as string
+			newDataNode->insertDataMap(iter->first, iter->second); // 새로 생기는 dataNode insert 시작
+			v.push_back(iter->first);
 		}
-		if (index == 3) { //if index==3 (after executing loop twice)
-			newDataNode->insertDataMap(iter->first, iter->second); //insert newDataNode as index node
-			second = iter->first; //store iter->first as string
+		else if(compareIndex>splitIndex){
+			newDataNode->insertDataMap(iter->first, iter->second); // 새로운 노드에는 넣고
+			v.push_back(iter->first);
 		}
-		index++;
+		compareIndex++;
 	}
 
-	pDataNode->deleteMap(first); //delete with name(first)
-	pDataNode->deleteMap(second); //delete with name(second)
-	pDataNode->setNext(newDataNode); //set pDataNode's next as newDataNode
-	newDataNode->setPrev(pDataNode); //set newDataNode's prev as pDataNode
-
-	if (originNextNode != NULL) { //if originNextNode exists
-		newDataNode->setNext(originNextNode); //set newDataNode's next as originNextNode
-		originNextNode->setPrev(newDataNode); //set originNextNode's prev as newDataNode
+	for(int i=0; i<v.size(); i++){
+		pDataNode->deleteMap(v[i]);
 	}
+
+	pDataNode->setNext(newDataNode); // pDataNode는 기존 노드
+	if(pDataNode->getParent()==NULL){
+		pDataNode->setParent(newIndexNode); // 기존 노드가 새로 생긴 indexNode를 parent로 함
+		newIndexNode->setMostLeftChild(pDataNode); // 새로 생긴 indexNode가 기존의 dataNode를 가장 왼쪽 노드로 가르킴
+	}
+	newDataNode->setPrev(pDataNode); // newDataNode는 갈라져 나온 노드
+	newDataNode->setParent(pDataNode->getParent()); // 갈라져 나온 노드가 새로 생긴 indexNode를 parent로 함
+	
+	// indexNode가 split 된 적 없고, dataNode 위 indexNode의 가장 왼쪽  dataNode의 이전 노드가 없으면 root로 설정
+	if((splitIndexNodes==false) && (pDataNode->getParent()->getMostLeftChild()->getPrev()==NULL)){
+		root=pDataNode->getParent();
+	}
+
+	return;
 }
 
 
