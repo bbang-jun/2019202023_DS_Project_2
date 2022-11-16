@@ -38,6 +38,12 @@ void Manager::run(const char* command)
 			char *tokItem, *tokLeastFrequency;
     		tokItem = strtok(NULL, " ");
    	 		tokLeastFrequency = strtok(NULL, "");
+			if(tokItem==NULL || tokLeastFrequency==NULL){
+				flog<<"========PRINT_BPTREE========"<<endl;
+				flog<<"ERROR 500"<<endl;
+				flog<<"=========================="<<endl<<endl;
+				continue;
+			}
 			int frequency = atoi(tokLeastFrequency);
 
 			PRINT_BPTREE(tokItem, frequency);
@@ -196,10 +202,12 @@ bool Manager::BTLOAD()
 }
 
 bool Manager::PRINT_ITEMLIST() {
-	//fpgrowth->getHeaderTable()->descendingIndexTable(); // adpat descending to header table
-	//fpgrowth->getHeaderTable()->PRINT_ITEMLIST(); // indextable 출력
-
-	fpgrowth->getHeaderTable()->printThresholdTable(); // 쓰레쉬홀드 제거된거 출력
+	flog<<"====PRINT_ITEMLIST==="<<endl;
+	flog<<"Item   Frequency"<<endl;
+	fpgrowth->getHeaderTable()->descendingIndexTable(); // adpat descending to header table
+	fpgrowth->getHeaderTable()->PRINT_ITEMLIST(); // indextable 출력
+	flog<<"======================="<<endl<<endl;
+	//fpgrowth->getHeaderTable()->printThresholdTable(); // 쓰레쉬홀드 제거된거 출력
 
 	//fpgrowth->getHeaderTable()->first(); // dataTable 출력
 
@@ -259,32 +267,64 @@ bool Manager::PRINT_FPTREE() { // for print FPTREE
 bool Manager::PRINT_BPTREE(char* item, int min_frequency) {
 	ofstream flog;
 	flog.open("log.txt", ofstream::app);
-	BpTreeNode* moveNode;
+	BpTreeNode* moveNode=bptree->getRoot();
 
+	// while(moveNode->getMostLeftChild()!=NULL)
+	// 	moveNode=moveNode->getMostLeftChild();
+
+	// map<int, FrequentPatternNode*>::iterator mapIter=moveNode->getDataMap()->begin();
+	// multimap<int, set<string>>::iterator multimapIter=mapIter->second->getList().begin();
+	// set<string>::iterator setIter=multimapIter->second.begin();
+	
+	// flog << "====== PRINT_BPTREE ======" << endl;
+
+	// while(moveNode!=NULL){
+	// 	while(mapIter!=moveNode->getDataMap()->end()){
+	// 		while(multimapIter!=mapIter->second->getList().end()){
+	// 			while(setIter!=multimapIter->second.end()){
+	// 				flog<<*setIter<<endl;
+	// 				setIter++;
+	// 			}
+	// 			multimapIter++;
+	// 		}
+	// 		mapIter++;
+	// 	}
+	// }
+
+
+	map<int, FrequentPatternNode*>::iterator iter;
 	multimap<int, set<string> >::iterator frequentIter;
 	set<string>::iterator stringIter;
+
 
 	moveNode = bptree->getRoot();
 	while (moveNode->getMostLeftChild() != NULL) { //go down til we meet data node (not index node)
 		moveNode = moveNode->getMostLeftChild();
 	}
 	flog << "====== PRINT_BPTREE ======" << endl;
+//
+
+//
 	while (moveNode != NULL) { // map<int, FrequentPatternNode*>*
-		for (auto iter = moveNode->getDataMap()->begin(); iter != moveNode->getDataMap()->end(); iter++) {
-			for(frequentIter=iter->second->getList().begin(); frequentIter!=iter->second->getList().end(); frequentIter++){
-				flog << "{";
-				for(stringIter=frequentIter->second.begin(); stringIter!=frequentIter->second.end(); stringIter++){
-					flog<< *stringIter << ","; //print log.txt
+		map<int, FrequentPatternNode*> data1 = *moveNode->getDataMap();
+		for (iter=data1.begin(); iter != data1.end(); iter++) {
+			multimap<int, set<string>> data2 = iter->second->getList();
+			for(frequentIter=data2.begin(); frequentIter!=data2.end(); frequentIter++){
+				set<string> data3 = frequentIter->second;
+				for(stringIter=data3.begin(); stringIter!=data3.end(); stringIter++){
+
+					flog << "{"<< *stringIter <<"} "<<endl;
 				}
-				flog <<"} ";
+				// bptree->printFrequentPatterns(frequentIter->second);
+				// cout<<endl;
+				flog<<frequentIter->first<<endl;
 			}
+			cout<<endl;
 			flog<<iter->first<<endl;
 		}
 		moveNode = moveNode->getNext(); //move moveNode to next
 	}
 	flog << "======================" << endl<<endl;
-	flog.close();
-	delete moveNode;
 }
 
 bool Manager::PRINT_CONFIDENCE(char* item, double rate) {

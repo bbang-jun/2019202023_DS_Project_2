@@ -1,0 +1,33 @@
+====== PRINT_BPTREE ======
+{burgers} 
+{soup} 
+2
+2
+{eggs} 
+{noodle    soup} 
+2
+3
+{beer    cola} 
+{chicken} 
+2
+{eggs} 
+{soup} 
+2
+{eggs} 
+{water} 
+2
+4
+{chicken} 
+{cola} 
+2
+5
+{burgers} 
+{cola} 
+2
+6
+{tissue} 
+{water} 
+2
+7
+======================
+

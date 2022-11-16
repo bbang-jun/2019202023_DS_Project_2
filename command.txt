@@ -1,1 +1,2 @@
 BTLOAD
+PRINT_BPTREE eggs 2

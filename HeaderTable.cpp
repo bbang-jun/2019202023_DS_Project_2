@@ -103,11 +103,10 @@ bool HeaderTable::find_item(string item){
 	return false;
 }
 
-void HeaderTable::PRINT_ITEMLIST(){
-	flog<<"index table 출력"<<endl;
+void HeaderTable::PRINT_ITEMLIST(){ // print index table
 	list<pair<int, string>>::iterator iter;
 	for(auto iter= indexTable.begin(); iter!=indexTable.end(); iter++){
-		flog<<iter->first<<" "<<iter->second<<endl;
+		flog<<iter->second<<" "<<iter->first<<endl;
 	}
 }
 
@@ -117,6 +116,7 @@ void HeaderTable::printThresholdTable(){
 		list<pair<int, string>>::iterator iter;
 		for(auto iter= thIndexTable.begin(); iter!=thIndexTable.end(); iter++){
 			flog<<iter->first<<" "<<iter->second<<endl;
+			//flog<<iter->first<<" "<<iter->second<<endl;
 		}
 }
 
