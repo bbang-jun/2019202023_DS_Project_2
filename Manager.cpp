@@ -99,8 +99,15 @@ bool Manager::LOAD()
 		flog<<"========LOAD========"<<endl;
 		flog<<"ERROR 100"<<endl;
 		flog<<"===================="<<endl<<endl;
+		return true;
 	}
 	else{
+		if(fpgrowth->getTree()->getChildren().empty()==false){ // if data is already insert
+			flog<<"========LOAD========"<<endl;
+			flog<<"ERROR 100"<<endl;
+			flog<<"===================="<<endl<<endl;
+			return true;
+		}
 		while(!market_txt.eof()){
 			getline(market_txt, strtokLine, '\n');
 			string judgeEnd=strtokLine;
@@ -170,7 +177,8 @@ bool Manager::LOAD()
 					break;
 			}
 			list<string>::iterator iter;
-			//flog<<"정렬된 트랜잭션"<<endl;
+			// below annotation is print of sorted transaction
+			//flog<<"sorted transaction"<<endl;
 			//for(iter=transactionList.begin(); iter!=transactionList.end(); iter++){
 				//flog<<*iter<<endl;
 			//}
@@ -179,6 +187,10 @@ bool Manager::LOAD()
 			transactionGetLine.clear(); 
 		}
 	}
+
+	flog<<"========LOAD========"<<endl;
+	flog<<"Success"<<endl;
+	flog<<"===================="<<endl<<endl;
 
 	return true;
 }
@@ -195,8 +207,15 @@ bool Manager::BTLOAD()
 		flog<<"========BTLOAD========"<<endl;
 		flog<<"ERROR 200"<<endl;
 		flog<<"===================="<<endl<<endl;
+		return true;
 	}
 	else{
+		if(bptree->getRoot()!=NULL){
+			flog<<"========BTLOAD========"<<endl;
+			flog<<"ERROR 200"<<endl;
+			flog<<"===================="<<endl<<endl;
+			return true;
+		}
 		while(!result_txt.eof()){
 			getline(result_txt, strtokLine, '\n');
 			string judgeEnd=strtokLine;
@@ -219,19 +238,29 @@ bool Manager::BTLOAD()
 		}
 	}
 
+	flog<<"========BTLOAD========"<<endl;
+	flog<<"Success"<<endl;
+	flog<<"===================="<<endl<<endl;
+
 	result_txt.close();
 	return true;
 }
 
 bool Manager::PRINT_ITEMLIST() {
+	if(fpgrowth->getHeaderTable()->getindexTable().empty()==true){
+		flog<<"====PRINT_ITEMLIST==="<<endl;
+		flog<<"ERROR 300"<<endl;
+		flog<<"====================="<<endl<<endl;
+		return true;
+	}
 	flog<<"====PRINT_ITEMLIST==="<<endl;
 	flog<<"Item   Frequency"<<endl;
-	fpgrowth->getHeaderTable()->descendingIndexTable(); // adpat descending to header table
-	fpgrowth->getHeaderTable()->PRINT_ITEMLIST(); // indextable 출력
+	fpgrowth->getHeaderTable()->descendingIndexTable(); // adpat descending to indexTable
+	fpgrowth->getHeaderTable()->PRINT_ITEMLIST(); // print indexTable
 	flog<<"======================="<<endl<<endl;
-	//fpgrowth->getHeaderTable()->printThresholdTable(); // 쓰레쉬홀드 제거된거 출력
 
-	//fpgrowth->getHeaderTable()->first(); // dataTable 출력
+	//fpgrowth->getHeaderTable()->printThresholdTable(); // print eliminate of below the threshold
+	//fpgrowth->getHeaderTable()->first(); // print dataTable
 
 	return true;
 }
