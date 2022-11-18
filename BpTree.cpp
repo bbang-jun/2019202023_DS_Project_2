@@ -228,7 +228,7 @@ void BpTree::splitIndexNode(BpTreeNode *pIndexNode)
 	BpTreeIndexNode *newIndexNode=new BpTreeIndexNode;
 	BpTreeNode *newnewIndexNode=NULL;
 	BpTreeNode *curNode=pIndexNode->getParent();
-	int splitIndex = ((order - 1) / 2.0) + 1;
+	int splitIndex = ceil((order - 1) / 2.0) + 1;
 	int compareIndex = 1;
 	vector<int> v;
 
@@ -321,7 +321,52 @@ bool BpTree::excessIndexNode(BpTreeNode *pIndexNode)
 
 bool BpTree::printConfidence(string item, double item_frequency, double min_confidence)
 {
+	flog.open("log.txt", ios::app);
 
+	BpTreeNode* moveNode=root;
+
+	flog<<"========PRINT_CONFIDENCE========"<<endl;
+	flog<<"FrequentPattern Frequency	Confidence"<<endl;
+	
+	map<int, FrequentPatternNode*>::iterator iter;
+	multimap<int, set<string> >::iterator frequentIter;
+	set<string>::iterator stringIter;
+
+	while (moveNode->getMostLeftChild() != NULL) { //go down til we meet data node (not index node)
+		moveNode = moveNode->getMostLeftChild();
+	}
+
+	double confidence;
+
+	while (moveNode != NULL) {
+		map<int, FrequentPatternNode*> data1 = *moveNode->getDataMap();
+		for (iter=data1.begin(); iter != data1.end(); iter++) {
+			multimap<int, set<string>> data2 = iter->second->getList();
+			for(frequentIter=data2.begin(); frequentIter!=data2.end(); frequentIter++){
+				set<string> data3 = frequentIter->second;
+				for(stringIter=data3.begin(); stringIter!=data3.end(); stringIter++){
+					if((*stringIter==item)){
+						confidence=iter->first/item_frequency;
+						if(confidence>=min_confidence){
+							flog<<"{";
+							for(stringIter=data3.begin(); stringIter!=data3.end(); stringIter++){
+								if((++stringIter)--==data3.end()){
+									flog<<*stringIter;
+									break;
+								}
+					
+							flog <<*stringIter<<", ";
+							}
+							flog<<"} "<<iter->first<<" "<<confidence <<endl;
+						}
+					}
+				}
+			}
+		}
+		moveNode = moveNode->getNext(); //move moveNode to next
+	}
+
+	flog<<"================================="<<endl;
 	return true;
 }
 // bool BpTree::printFrequency(string item, int min_frequency) // print winratio in ascending order

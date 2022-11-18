@@ -5,6 +5,7 @@
 #include "BpTreeIndexNode.h"
 #include <fstream>
 #include <iostream>
+#include "HeaderTable.h"
 
 class BpTree {
 private:
@@ -19,6 +20,7 @@ public:
 	}
 	~BpTree();
 	/* essential */
+	ofstream flog;
 	bool		Insert(int key, set<string> set);
 	bool		excessDataNode(BpTreeNode* pDataNode);
 	bool		excessIndexNode(BpTreeNode* pIndexNode);

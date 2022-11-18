@@ -19,7 +19,7 @@ void Manager::run(const char* command)
 		if(commandFromtxt.empty()==true)
 			break;
 		strcpy(factor, commandFromtxt.c_str());
-		char *ptr = strtok(factor, " ");
+		char *ptr = strtok(factor, "\t");
 		commandFromtxt=ptr;
 
 		if(commandFromtxt=="LOAD"){
@@ -36,7 +36,7 @@ void Manager::run(const char* command)
 		}
 		else if(commandFromtxt=="PRINT_BPTREE"){
 			char *tokItem, *tokLeastFrequency;
-    		tokItem = strtok(NULL, " ");
+    		tokItem = strtok(NULL, "\t");
    	 		tokLeastFrequency = strtok(NULL, "");
 			if(tokItem==NULL || tokLeastFrequency==NULL){
 				flog<<"========PRINT_BPTREE========"<<endl;
@@ -49,12 +49,22 @@ void Manager::run(const char* command)
 			PRINT_BPTREE(tokItem, frequency);
 		}
 		else if(commandFromtxt=="PRINT_CONFIDENCE"){
-			//PRINT_CONFIDENCE();
+			char *tokItem, *tokConfidence;
+    		tokItem = strtok(NULL, "\t");
+   	 		tokConfidence = strtok(NULL, "");
+			if(tokItem==NULL || tokConfidence==NULL){
+				flog<<"========PRINT_CONFIDENCE========"<<endl;
+				flog<<"ERROR 600"<<endl;
+				flog<<"=========================="<<endl<<endl;
+				continue;
+			}
+			double confidence = stod(tokConfidence);
+			PRINT_CONFIDENCE(tokItem, confidence);
 		}
 		else if(commandFromtxt=="PRINT_RANGE"){
 			char *tokItem, *tokFirstRange, *tokSecondRange;
-    		tokItem = strtok(NULL, " ");
-   	 		tokFirstRange = strtok(NULL, " ");
+    		tokItem = strtok(NULL, "\t");
+   	 		tokFirstRange = strtok(NULL, "\t");
 			tokSecondRange = strtok(NULL, "");
 			if(tokItem==NULL || tokFirstRange==NULL || tokSecondRange==NULL){
 				flog<<"========PRINT_Range========"<<endl;
@@ -342,26 +352,16 @@ bool Manager::PRINT_BPTREE(char* item, int min_frequency) {
 	// }
 }
 
-// bool Manager::PRINT_BPTREE() {
-// 	char *fitem = strtok(NULL, "\t");
-// 	char *fnum = strtok(NULL, "\t");
-// 	fitem="eggs";
-// 	fnum="2";
-// 	if(fitem==NULL||fnum==NULL) //check if input is NULL
-// 		return false;
-// 	if (fnum[0] < 48 || fnum[0] > 57) // check if fnum is number
-// 		return false;
-// 	int MIN_FRE = stoi(fnum); // change into int
-// 	string ITEM = fitem; //change into string
-
-// 	if(bptree->printFrequency(ITEM, MIN_FRE))
-// 		return true;
-// 	else
-// 		return false;
-// }
-
 bool Manager::PRINT_CONFIDENCE(char* item, double rate) {
-	
+
+
+	list<pair<int, string>> indexTable = fpgrowth->getHeaderTable()->getindexTable();
+
+	int totalFrequeny=fpgrowth->getHeaderTable()->find_frequency(item);
+
+	bptree->printConfidence(item, totalFrequeny, rate);
+
+	return true;
 }
 
 bool Manager::PRINT_RANGE(char* item, int start, int end) {

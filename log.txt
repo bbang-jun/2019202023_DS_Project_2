@@ -1,0 +1,20 @@
+========PRINT_CONFIDENCE========
+FrequentPattern Frequency	Confidence
+{eggs, mineral water} 248 0.313131
+=================================
+========PRINT_CONFIDENCE========
+FrequentPattern Frequency	Confidence
+{eggs, low fat yogurt} 87 0.109848
+{eggs, ground beef} 90 0.113636
+{eggs, turkey} 95 0.119949
+{cake, eggs} 96 0.121212
+{eggs, pancakes} 106 0.133838
+{eggs, frozen vegetables} 109 0.137626
+{eggs, green tea} 141 0.17803
+{eggs, milk} 145 0.183081
+{burgers, eggs} 154 0.194444
+{chocolate, eggs} 161 0.203283
+{eggs, spaghetti} 166 0.209596
+{eggs, french fries} 199 0.251263
+{eggs, mineral water} 248 0.313131
+=================================
