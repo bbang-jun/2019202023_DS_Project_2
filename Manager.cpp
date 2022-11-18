@@ -287,15 +287,21 @@ bool Manager::PRINT_BPTREE(char* item, int min_frequency) {
 			multimap<int, set<string>> data2 = iter->second->getList();
 			for(frequentIter=data2.begin(); frequentIter!=data2.end(); frequentIter++){
 				set<string> data3 = frequentIter->second;
-				flog<<"{";
 				for(stringIter=data3.begin(); stringIter!=data3.end(); stringIter++){
-					if((++stringIter)--==data3.end()){
-						flog<<*stringIter;
-						break;
+					if((*stringIter==item)&&(frequentIter->first>=min_frequency)){
+						flog<<"{";
+						for(stringIter=data3.begin(); stringIter!=data3.end(); stringIter++){
+						if((++stringIter)--==data3.end()){
+							flog<<*stringIter;
+							break;
+						}
+					
+						flog <<*stringIter<<", ";
+						}
+						//flog<<"} "<<frequentIter->first<<endl;
+						flog<<"} "<<iter->first<<endl;
 					}
-					flog <<*stringIter<<", ";
 				}
-				flog<<"} "<<frequentIter->first<<endl;
 			}
 		}
 		moveNode = moveNode->getNext(); //move moveNode to next
@@ -323,6 +329,24 @@ bool Manager::PRINT_BPTREE(char* item, int min_frequency) {
 	// 	moveNode = moveNode->getNext(); //move moveNode to next
 	// }
 }
+
+// bool Manager::PRINT_BPTREE() {
+// 	char *fitem = strtok(NULL, "\t");
+// 	char *fnum = strtok(NULL, "\t");
+// 	fitem="eggs";
+// 	fnum="2";
+// 	if(fitem==NULL||fnum==NULL) //check if input is NULL
+// 		return false;
+// 	if (fnum[0] < 48 || fnum[0] > 57) // check if fnum is number
+// 		return false;
+// 	int MIN_FRE = stoi(fnum); // change into int
+// 	string ITEM = fitem; //change into string
+
+// 	if(bptree->printFrequency(ITEM, MIN_FRE))
+// 		return true;
+// 	else
+// 		return false;
+// }
 
 bool Manager::PRINT_CONFIDENCE(char* item, double rate) {
 	

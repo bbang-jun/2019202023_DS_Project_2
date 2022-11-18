@@ -128,7 +128,7 @@ BpTreeNode *BpTree::searchDataNode(int n)
 	map<int, FrequentPatternNode *>::iterator dataIter = pCur->getDataMap()->begin();
 
 
-	while(pCur->getNext()!=NULL){
+	while(1){
 		for (dataIter = pCur->getDataMap()->begin(); dataIter != pCur->getDataMap()->end(); dataIter++)
 		{
 			if (dataIter->first == n)
@@ -149,7 +149,8 @@ void BpTree::splitDataNode(BpTreeNode *pDataNode)
 {
 
 	BpTreeDataNode *newDataNode = new BpTreeDataNode;
-	BpTreeIndexNode *newIndexNode;
+	BpTreeIndexNode *newIndexNode=NULL;
+	BpTreeNode*splitNewIndexNode=NULL;
 	int splitIndex = ((order - 1) / 2.0) + 1;
 	int compareIndex = 1;
 	vector<int> v;
@@ -193,15 +194,25 @@ void BpTree::splitDataNode(BpTreeNode *pDataNode)
 	{
 		pDataNode->deleteMap(v[i]);
 	}
+	newDataNode->setNext(pDataNode->getNext());
+	if(newDataNode->getNext()!=NULL){
+		newDataNode->getNext()->setPrev(newDataNode);
+	}
 
 	pDataNode->setNext(newDataNode); // pDataNode는 기존 노드
-	if (pDataNode->getParent() == NULL)
+	newDataNode->setPrev(pDataNode);	// newDataNode는 갈라져 나온 노드
+
+	if ((newIndexNode!=NULL)&&(newDataNode->getParent() == NULL))
 	{
-		pDataNode->setParent(newIndexNode);		   // 기존 노드가 새로 생긴 indexNode를 parent로 함
-		newIndexNode->setMostLeftChild(pDataNode); // 새로 생긴 indexNode가 기존의 dataNode를 가장 왼쪽 노드로 가르킴
+		newIndexNode->setMostLeftChild(pDataNode);
+		pDataNode->setParent(newIndexNode);
+		newDataNode->setParent(newIndexNode);
 	}
-	newDataNode->setPrev(pDataNode);				// newDataNode는 갈라져 나온 노드
-	newDataNode->setParent(pDataNode->getParent()); // 갈라져 나온 노드가 새로 생긴 indexNode를 parent로 함
+	else if(newIndexNode==NULL){
+		newDataNode->setParent(pDataNode->getParent()); 
+		pDataNode->setParent(newDataNode->getParent());
+	}
+
 
 	// indexNode가 split 된 적 없고, dataNode 위 indexNode의 가장 왼쪽  dataNode의 이전 노드가 없으면 root로 설정
 	if ((splitIndexNodes == false) && (pDataNode->getParent()->getMostLeftChild()->getPrev() == NULL))
@@ -209,13 +220,14 @@ void BpTree::splitDataNode(BpTreeNode *pDataNode)
 		root = pDataNode->getParent();
 	}
 
+
 	return;
 }
 
 void BpTree::splitIndexNode(BpTreeNode *pIndexNode)
 {
 	BpTreeIndexNode *newIndexNode=new BpTreeIndexNode;
-	BpTreeNode *newnewIndexNode;
+	BpTreeNode *newnewIndexNode=NULL;
 	BpTreeNode *curNode=pIndexNode->getParent();
 	int splitIndex = ((order - 1) / 2.0) + 1;
 	int compareIndex = 1;
@@ -233,6 +245,9 @@ void BpTree::splitIndexNode(BpTreeNode *pIndexNode)
 				// newIndexNode=pDataNode->getParent();
 				v.push_back(iter->first);
 				curNode->insertIndexMap(iter->first, newIndexNode); // frequency와 가르키기 위한 새로 생긴 데이터 노드로 insert
+				newIndexNode->setParent(pIndexNode->getParent());
+				newIndexNode->setMostLeftChild(iter->second);
+				newIndexNode->getMostLeftChild()->setParent(newIndexNode);
 			}
 			else
 			{
@@ -240,11 +255,18 @@ void BpTree::splitIndexNode(BpTreeNode *pIndexNode)
 				newnewIndexNode = new BpTreeIndexNode;
 				newnewIndexNode->insertIndexMap(iter->first, newIndexNode); // indexNode insert
 				curNode=newnewIndexNode;
+				newnewIndexNode->setMostLeftChild(pIndexNode);
+				pIndexNode->setParent(newnewIndexNode);
+				newIndexNode->setParent(newnewIndexNode);
+				iter->second->setParent(newIndexNode);
+				newIndexNode->setMostLeftChild(iter->second);
+				int k=0;
 			}
 		}
 		else if (compareIndex > splitIndex)
 		{
 			newIndexNode->insertIndexMap(iter->first, iter->second); // 새로운 노드에는 넣고
+			iter->second->setParent(newIndexNode);
 			v.push_back(iter->first);
 		}
 		compareIndex++;
@@ -254,26 +276,26 @@ void BpTree::splitIndexNode(BpTreeNode *pIndexNode)
 	{
 		pIndexNode->deleteMap(v[i]);
 	}
-
-
-	if (pIndexNode->getParent() == NULL)
-	{
-		pIndexNode->setParent(newnewIndexNode);		   // 기존 노드가 새로 생긴 indexNode를 parent로 함
-		newnewIndexNode->setMostLeftChild(pIndexNode); // 새로 생긴 indexNode가 기존의 dataNode를 가장 왼쪽 노드로 가르킴
-	}
-	newIndexNode->setParent(newnewIndexNode); // 갈라져 나온 노드가 새로 생긴 indexNode를 parent로 함
+	
+	
 
 	// indexNode가 split 된 적 없고, dataNode 위 indexNode의 가장 왼쪽  dataNode의 이전 노드가 없으면 root로 설정
-	BpTreeNode* temp = newnewIndexNode;
-	while(1){
-		if(temp->getMostLeftChild()==NULL){
-			if(temp->getPrev()==NULL){
-				root=newnewIndexNode;
-				break;
+	if(newnewIndexNode!=NULL){
+		if(newnewIndexNode->getMostLeftChild()!=NULL){
+		BpTreeNode* temp = newnewIndexNode;
+		while(1){
+			if(temp->getMostLeftChild()==NULL){
+				if(temp->getPrev()==NULL){
+					root=newnewIndexNode;
+					break;
+				}
 			}
-		}
 		temp=temp->getMostLeftChild();
+		}
 	}
+	}
+	
+	
 
 	if(excessIndexNode(curNode)==true){
 		splitIndexNode(curNode);
@@ -303,11 +325,54 @@ bool BpTree::printConfidence(string item, double item_frequency, double min_conf
 
 	return true;
 }
-bool BpTree::printFrequency(string item, int min_frequency) // print winratio in ascending order
-{
+// bool BpTree::printFrequency(string item, int min_frequency) // print winratio in ascending order
+// {
 
-	return true;
-}
+// 	return true;
+// }
+// bool BpTree::printFrequency(string item, int min_frequency)//print winratio in ascending order
+// {
+// 	bool bar = false;
+// 	if (root == NULL)
+// 		return false;
+
+// 	BpTreeNode *CurNode = root;
+
+// 	while (CurNode->getMostLeftChild())
+// 	{
+// 		CurNode = CurNode->getMostLeftChild();
+// 	}
+// 	while(CurNode){
+// 		map<int, FrequentPatternNode *>* Data = CurNode->getDataMap();
+// 		for (auto iter = Data->begin(); iter != Data->end();iter++){ //approach to every data node
+// 			if (iter->first >= min_frequency) //check if frequency is over min_frequency
+// 			{
+// 			multimap<int, set<string>> TEMP = iter->second->getList(); //get the multimap from Frequent node
+// 			for (auto iter2 = TEMP.begin(); iter2 != TEMP.end();iter2++){
+// 				if(iter2->first==4)
+// 				if(iter2->second.find(item)!=iter2->second.end()){
+// 					if (bar == false)
+// 					{
+// 						cout << "========PRINT_BPTREE========" << endl
+// 						<< "FrequentPattern	Frequency" << endl;
+				
+// 						bar = true;
+// 					}
+// 					printFrequentPatterns(iter2->second);
+// 					cout << iter->first << endl;
+	
+// 					}
+// 			}
+// 			}
+// 		}
+// 		CurNode = CurNode->getNext();
+// 		}
+// 		if (bar == false)
+// 		return false;
+// 		cout << "==========================" << endl
+// 			 << endl;
+// 		return true;
+// }
 bool BpTree::printRange(string item, int min, int max)
 {
 
