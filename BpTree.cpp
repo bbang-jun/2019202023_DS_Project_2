@@ -194,11 +194,10 @@ void BpTree::splitDataNode(BpTreeNode *pDataNode)
 	{
 		pDataNode->deleteMap(v[i]);
 	}
-	newDataNode->setNext(pDataNode->getNext());
+	newDataNode->setNext(pDataNode->getNext()); // 데이터 노드간 연결
 	if(newDataNode->getNext()!=NULL){
 		newDataNode->getNext()->setPrev(newDataNode);
 	}
-
 	pDataNode->setNext(newDataNode); // pDataNode는 기존 노드
 	newDataNode->setPrev(pDataNode);	// newDataNode는 갈라져 나온 노드
 

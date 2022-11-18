@@ -52,7 +52,19 @@ void Manager::run(const char* command)
 			//PRINT_CONFIDENCE();
 		}
 		else if(commandFromtxt=="PRINT_RANGE"){
-			//PRINT_RANGE();
+			char *tokItem, *tokFirstRange, *tokSecondRange;
+    		tokItem = strtok(NULL, " ");
+   	 		tokFirstRange = strtok(NULL, " ");
+			tokSecondRange = strtok(NULL, "");
+			if(tokItem==NULL || tokFirstRange==NULL || tokSecondRange==NULL){
+				flog<<"========PRINT_Range========"<<endl;
+				flog<<"ERROR 700"<<endl;
+				flog<<"=========================="<<endl<<endl;
+				continue;
+			}
+			int firstRange = atoi(tokFirstRange);
+			int secondRange = atoi(tokSecondRange);
+			PRINT_RANGE(tokItem, firstRange, secondRange);
 		}
 		else if(commandFromtxt=="SAVE"){
 			SAVE();
@@ -288,7 +300,7 @@ bool Manager::PRINT_BPTREE(char* item, int min_frequency) {
 			for(frequentIter=data2.begin(); frequentIter!=data2.end(); frequentIter++){
 				set<string> data3 = frequentIter->second;
 				for(stringIter=data3.begin(); stringIter!=data3.end(); stringIter++){
-					if((*stringIter==item)&&(frequentIter->first>=min_frequency)){
+					if((*stringIter==item)&&(iter->first>=min_frequency)){
 						flog<<"{";
 						for(stringIter=data3.begin(); stringIter!=data3.end(); stringIter++){
 						if((++stringIter)--==data3.end()){
@@ -353,12 +365,51 @@ bool Manager::PRINT_CONFIDENCE(char* item, double rate) {
 }
 
 bool Manager::PRINT_RANGE(char* item, int start, int end) {
-	
+	BpTreeNode* moveNode=bptree->getRoot();
+
+	map<int, FrequentPatternNode*>::iterator iter;
+	multimap<int, set<string> >::iterator frequentIter;
+	set<string>::iterator stringIter;
+
+
+	moveNode = bptree->getRoot();
+	while (moveNode->getMostLeftChild() != NULL) { //go down til we meet data node (not index node)
+		moveNode = moveNode->getMostLeftChild();
+	}
+
+	flog<<"========PRINT_RANGE========"<<endl;
+	flog<<"FrequentPattern Frequency"<<endl;
+	while (moveNode != NULL) {
+		map<int, FrequentPatternNode*> data1 = *moveNode->getDataMap();
+		for (iter=data1.begin(); iter != data1.end(); iter++) {
+			multimap<int, set<string>> data2 = iter->second->getList();
+			for(frequentIter=data2.begin(); frequentIter!=data2.end(); frequentIter++){
+				set<string> data3 = frequentIter->second;
+				for(stringIter=data3.begin(); stringIter!=data3.end(); stringIter++){
+						if((*stringIter==item)&&((iter->first>=start)&&(iter->first<=end))){
+						flog<<"{";
+						for(stringIter=data3.begin(); stringIter!=data3.end(); stringIter++){
+						if((++stringIter)--==data3.end()){
+							flog<<*stringIter;
+							break;
+						}
+					
+						flog <<*stringIter<<", ";
+						}
+						//flog<<"} "<<frequentIter->first<<endl;
+						flog<<"} "<<iter->first<<endl;
+					}
+				}
+			}
+		}
+		moveNode = moveNode->getNext(); //move moveNode to next
+	}
+	flog<<"============================="<<endl;
 }
 
 void Manager::printErrorCode(string command, int code) {				//ERROR CODE PRINT
 	flog << "ERROR " << code << endl;
-	flog << "=======================" << endl << endl;
+	flog << "=======================" << endl;
 }
 
 void Manager::printSuccessCode() {//SUCCESS CODE PRINT 
