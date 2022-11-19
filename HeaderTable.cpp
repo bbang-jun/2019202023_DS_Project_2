@@ -1,129 +1,101 @@
 #include "HeaderTable.h"
 
-HeaderTable::~HeaderTable() {
+HeaderTable::~HeaderTable() {} // destructor
 
-}
+void HeaderTable::insertTable(string item, int frequency) { // make index table(insert)
 
-void HeaderTable::insertTable(string item, int frequency) {
-
-	if (frequency == 0){
+	if (frequency == 0){ // if some item is first inserted
 		indexTable.push_back(make_pair(frequency+1, item));
 	} 
 	else
 	{
 		int i=0;
-		int indexTableSize = indexTable.size();
-		list<pair<int, string>> tempIndexTable;
-		tempIndexTable=indexTable;
+		int indexTableSize = indexTable.size(); // get indexTable's size
+		list<pair<int, string>> tempIndexTable=indexTable; // variale of indexTable
 		pair<int, string> tempPair;
 
-		while(i!=indexTableSize){
-			tempPair=tempIndexTable.front(); //temppair is the front pair of tempindex
-			tempIndexTable.pop_front(); //pop the tempindex
-			if (tempPair.second == item) //if temppair's second is same with item
-				tempPair.first+=1; //add frequency
-			tempIndexTable.push_back(make_pair(tempPair.first, tempPair.second)); //push the temppair into tempindex
+		while(i!=indexTableSize){ // repeat while indexTableSize
+			tempPair=tempIndexTable.front(); // temppair is the front pair of tempindex
+			tempIndexTable.pop_front(); // pop front the tempindex
+			if (tempPair.second == item) // if temppair's second is same with item
+				tempPair.first+=1; // add frequency
+			tempIndexTable.push_back(make_pair(tempPair.first, tempPair.second)); // push the temppair into tempindex
 			i++;
 		}
 
-		indexTable=tempIndexTable;
-		tempIndexTable.clear();
+		indexTable=tempIndexTable; // save tempIndexTable to indexTable
+		tempIndexTable.clear(); // clear the tempIndexTable
 	}
 }
 
-void HeaderTable::makeThIndexTable(int threshold){
+void HeaderTable::makeThIndexTable(int threshold){ // make same or bigger threshold index table
 	int i=0;
-	int indexTableSize = indexTable.size();
-	list<pair<int, string>> tempIndexTable;
-	tempIndexTable=indexTable;
+	int indexTableSize = indexTable.size(); // get indexTable's size
+	list<pair<int, string>> tempIndexTable=indexTable;
 	pair<int, string> tempPair;
 
-	while(i!=indexTableSize){
-		tempPair=tempIndexTable.front(); //temppair is the front pair of tempindex
-		tempIndexTable.pop_front(); //pop the tempindex
-		if(tempPair.first>=threshold){
-			thIndexTable.push_back(make_pair(tempPair.first, tempPair.second));
+	while(i!=indexTableSize){ // repeat while indexTableSize
+		tempPair=tempIndexTable.front(); // temppair is the front pair of tempindex
+		tempIndexTable.pop_front(); // pop front the tempindex
+		if(tempPair.first>=threshold){ // if satifying same or bigger than threshold
+			thIndexTable.push_back(make_pair(tempPair.first, tempPair.second)); // insert in thIndexTable
 		}
 		i++;
 	}
-	tempIndexTable.clear();
+	tempIndexTable.clear(); // clear the tempIndexTable
 }
 
-void HeaderTable:: makeDataTable(){
+void HeaderTable:: makeDataTable(){ // make Data table
 
 	int i=0;
-	int ThIndexTableSize = thIndexTable.size();
-	list<pair<int, string>> tempIndexTable;
-	tempIndexTable=thIndexTable;
+	int ThIndexTableSize = thIndexTable.size(); // get thIndexTable's size
+	list<pair<int, string>> tempIndexTable=thIndexTable;
 	pair<int, string> tempPair;
 
-	while(i!=ThIndexTableSize){
-		FPNode* Pointer = new FPNode;
-		tempPair=tempIndexTable.front(); //temppair is the front pair of tempindex
+	while(i!=ThIndexTableSize){ // repeat while ThIndexTableSize
+		FPNode* Pointer = new FPNode; // make new node
+		tempPair=tempIndexTable.front(); // temppair is the front pair of tempindex
 		tempIndexTable.pop_front(); //pop the tempindex
-		dataTable.insert(make_pair(tempPair.second, Pointer));
-		 // map<string, FPNode*>
+		dataTable.insert(make_pair(tempPair.second, Pointer)); // insert in dataTable
 		i++;
 	}
 }
 
-int HeaderTable::find_frequency(string item){
+int HeaderTable::find_frequency(string item){ // find certain item's frequency
 	int frequency = 0;
 	int i=0;
-	int indexTableSize = indexTable.size();
-	list<pair <int, string>> tempIndexTable;
-	tempIndexTable=indexTable;
+	int indexTableSize = indexTable.size(); // get indexTableSize
+	list<pair <int, string>> tempIndexTable=indexTable;
 	pair<int, string> tempPair;
 
-	while(i!=indexTableSize){
+	while(i!=indexTableSize){ // repeat while indexTableSize
 		tempPair=tempIndexTable.front();
-		if (tempPair.second == item) 
+		if (tempPair.second == item) // if find same name item in tempIndexTable
 		{
-			frequency = tempPair.first; 
-			
+			frequency = tempPair.first; // save freuqncy
 			break;
 		}
 		else 
-			tempIndexTable.pop_front(); 
+			tempIndexTable.pop_front(); // pop first element in tempIndexTable
 		i++;
 	}
 
-
-	return frequency; 
+	return frequency; // return certain item's frequency
 }
 
-bool HeaderTable::find_item(string item){
-	list<pair<int, string>>::iterator iter;
-
-	for(auto iter= indexTable.begin(); iter!=indexTable.end(); iter++){
-		if(item==iter->second){
-			return true;
+bool HeaderTable::find_item(string item){ // find the certain item in indexTable
+	list<pair<int, string>>::iterator iter; // declare iterator
+	for(auto iter= indexTable.begin(); iter!=indexTable.end(); iter++){ // repeat
+		if(item==iter->second){ // if find item in indexTable
+			return true; 
 		}
 	}
 	return false;
 }
 
 void HeaderTable::PRINT_ITEMLIST(){ // print index table
-	list<pair<int, string>>::iterator iter;
-	for(auto iter= indexTable.begin(); iter!=indexTable.end(); iter++){
-		flog<<iter->second<<" "<<iter->first<<endl;
+	list<pair<int, string>>::iterator iter; // declare iterator
+	for(auto iter= indexTable.begin(); iter!=indexTable.end(); iter++){ // repeat
+		flog<<iter->second<<" "<<iter->first<<endl; // print all item name and frequency in index table
 	}
-}
-
-void HeaderTable::printThresholdTable(){
-	thIndexTable.sort(greater<pair<int, string>>());
-		flog<<"threshold로 거른 index table 출력"<<endl;
-		list<pair<int, string>>::iterator iter;
-		for(auto iter= thIndexTable.begin(); iter!=thIndexTable.end(); iter++){
-			flog<<iter->first<<" "<<iter->second<<endl;
-			//flog<<iter->first<<" "<<iter->second<<endl;
-		}
-}
-
-void HeaderTable::first(){
-		flog<<"dataTable 출력"<<endl;
-		map<string, FPNode*>::iterator iter;
-		for(auto iter= dataTable.begin(); iter!=dataTable.end(); iter++){
-			flog<<iter->first<<" "<<iter->second->getNext()->getFrequency()<<endl;
-		}//iter->second->getNext()->getFrequency()<<
 }

@@ -1,6 +1,6 @@
 #include "FPNode.h"
 
-FPNode::FPNode()	//constructor
+FPNode::FPNode()	// constructor
 {
 	parent = NULL;
 	next = NULL;
@@ -8,21 +8,13 @@ FPNode::FPNode()	//constructor
 }
 
 
-FPNode::~FPNode()//destructor
-{
+FPNode::~FPNode(){} // destructor
 
-}
 
-FPNode* FPNode::getChildrenNode(string item) {
+
+FPNode* FPNode::getChildrenNode(string item) { // find children node, and return find node
 	map<string, FPNode*>::iterator it = children.find(item);
 	if (it == children.end()) return NULL;
 	FPNode* findNode = it->second;
 	return findNode;
 }
-
-// string FPNode::getItemName(FPNode* node) {
-// 	map<string, FPNode*>::iterator it = children.find(node);
-// 	if (it == children.end()) return NULL;
-// 	FPNode* findNode = it->second;
-// 	return findNode;
-// }

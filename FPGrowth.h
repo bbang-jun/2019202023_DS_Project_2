@@ -8,18 +8,18 @@
 class FPGrowth // FP-Growth Class
 {
 private:
-	int threshold; // restrict frequency (빈도수 제한)
-	FPNode* fpTree; // FP-Tree(자식 노드를 제외하고 NULL 값을 가짐)-root
+	int threshold; // restrict frequency
+	FPNode* fpTree; // FP-Tree root
 	HeaderTable* table; // Header Table
-	map<set<string>, int> frequenctPatterns; // generated Frequent Patterns(생성된 Frequent Patterns)
-	ofstream* fout; // log file (log 파일)
-	ofstream flog; // result file (result 파일)
+	map<set<string>, int> frequenctPatterns; // generated Frequent Patterns
+	ofstream* fout; // log file
+	ofstream flog; // result file
 public:
 	FPGrowth(ofstream *fout, int threshold = 3) { // constructor
 		this->threshold = threshold; // set threshold 
 		flog.open("result.txt", ios::app); 
-		flog.setf(ios::fixed); // 고정 소수점 출력
-		fpTree = new FPNode;  table = new HeaderTable; // 동적할당
+		flog.setf(ios::fixed); // print fixed float point
+		fpTree = new FPNode;  table = new HeaderTable; // dynamic allocate
 		this->fout = fout;
 	}
 	~FPGrowth(); // desctructor
@@ -29,7 +29,7 @@ public:
 	void connectNode(HeaderTable* table, string item, FPNode* node); // connect the node in FP tree
 
 
-	list<string> makeOrderedTransaction(list<string> item_array);
+	list<string> makeOrderedTransaction(list<string> item_array); // sort transaction for ascending frequency
 
 	
 	void frequenctPatternSetting() { 
@@ -37,14 +37,14 @@ public:
 		frequenctPatterns = getFrequentPatterns(table, fpTree);
 	}
 
-	map<set<string>, int> getFrequentPatterns(HeaderTable* pTable, FPNode* pTree);
-	void powerSet(map<set<string>, int>* FrequentPattern, vector<string> data, string item, int frequency, int* flag, int depth);
-	bool contains_single_path(FPNode* pNode);
-	int item_frequency(string item) {return table->find_frequency(item);}
+	map<set<string>, int> getFrequentPatterns(HeaderTable* pTable, FPNode* pTree); // for implement save
+	void powerSet(map<set<string>, int>* FrequentPattern, vector<string> data, string item, int frequency, int* flag, int depth); // for implement save
+	bool contains_single_path(FPNode* pNode); // for implement save
+	int item_frequency(string item) {return table->find_frequency(item);} // for implement save
 	FPNode* getTree() { return fpTree; } // return fpTree
 	HeaderTable* getHeaderTable() { return table; } // return table
 
-	bool printList();
-	bool printTree();
-	void saveFrequentPatterns();
+	bool printList(); // print of list
+	bool printTree(); // print of tree
+	void saveFrequentPatterns(); // for implement save
 };

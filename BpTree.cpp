@@ -1,38 +1,36 @@
 #include "BpTree.h"
 #include <vector>
 
-bool BpTree::Insert(int frequency, set<string> itemset)
-{ // 2	milk	eggs
-	if (itemset.size() <= 1)
-	{ // 공집합이거나 원소가 하나인 집합 저장x
+bool BpTree::Insert(int frequency, set<string> itemset) // insert into B+-Tree
+{ 
+	if (itemset.size() <= 1) // if element size is zero or once, not save into the B+-Tree
+	{ 
 		return true;
 	}
 
-	// BpTreeNode* checkSplit;
-	if (root == NULL)
-	{ // if there's nothing in bptree
-		BpTreeDataNode *dataNode = new BpTreeDataNode;
-		FrequentPatternNode *newFqptNode = new FrequentPatternNode;
-		newFqptNode->InsertList(itemset); // FrequentPatterNode의 1번째 인자와 2번째 인자 저장
-		newFqptNode->setFrequency(frequency);
-		dataNode->insertDataMap(frequency, newFqptNode); // 파란색 노드 완성
-		root = dataNode;
+	if (root == NULL) // if root is NULL, make root node
+	{ 
+		BpTreeDataNode *dataNode = new BpTreeDataNode; // make first dataNode
+		FrequentPatternNode *newFqptNode = new FrequentPatternNode; // make FrequentPatterNode for connnect with dataNode
+		newFqptNode->InsertList(itemset); // save FrequentPatterNode's first argument
+		newFqptNode->setFrequency(frequency); // save FrequentPatterNode's second argument
+		dataNode->insertDataMap(frequency, newFqptNode); // make complete dataNode's data
+		root = dataNode; // set the root is dataNode
 	}
-	else
+	else // if root is exist
 	{
-		if (searchDataNode(frequency) == NULL)
-		{ // data 노드 목록 중에 frequency와 일치하는 dataNode가 없는 경우
+		if (searchDataNode(frequency) == NULL) // if dataNode is not exist, correspond that dataNode
+		{ 
+			BpTreeNode*curNode = root; // current Node is root
 
-			BpTreeNode*curNode = root;
-
-			while (curNode->getMostLeftChild() != NULL)
+			while (curNode->getMostLeftChild() != NULL) // move curNode to dataNode
 			{
 				if(curNode->getMostLeftChild()==NULL)
 					break;
 				curNode=curNode->getMostLeftChild();
 			}
 
-			map<int, FrequentPatternNode *>::iterator iter;
+			map<int, FrequentPatternNode *>::iterator iter; // declare iterator
 			map<int, FrequentPatternNode *>::iterator cmpNextIter;
 
 			while(curNode!=NULL){ // 해당 frequency를 가진 dataNode가 없을 때 삽입 진행하는 코드
@@ -324,9 +322,10 @@ bool BpTree::printConfidence(string item, double item_frequency, double min_conf
 	flog.open("log.txt", ios::app);
 
 	BpTreeNode* moveNode=root;
+	int i=0;
 
 	flog<<"========PRINT_CONFIDENCE========"<<endl;
-	flog<<"FrequentPattern Frequency	Confidence"<<endl;
+	
 	
 	map<int, FrequentPatternNode*>::iterator iter;
 	multimap<int, set<string> >::iterator frequentIter;
@@ -348,6 +347,9 @@ bool BpTree::printConfidence(string item, double item_frequency, double min_conf
 					if((*stringIter==item)){
 						confidence=iter->first/item_frequency;
 						if(confidence>=min_confidence){
+							i++;
+							if(i==1)
+							flog<<"FrequentPattern Frequency	Confidence"<<endl;
 							flog<<"{";
 							for(stringIter=data3.begin(); stringIter!=data3.end(); stringIter++){
 								if((++stringIter)--==data3.end()){
@@ -366,57 +368,13 @@ bool BpTree::printConfidence(string item, double item_frequency, double min_conf
 		moveNode = moveNode->getNext(); //move moveNode to next
 	}
 
+	if(i==0) // there is nothing to print Frequent Pattern
+		flog<<"ERROR 600"<<endl; 
+
 	flog<<"================================="<<endl<<endl;
 	return true;
 }
-// bool BpTree::printFrequency(string item, int min_frequency) // print winratio in ascending order
-// {
 
-// 	return true;
-// }
-// bool BpTree::printFrequency(string item, int min_frequency)//print winratio in ascending order
-// {
-// 	bool bar = false;
-// 	if (root == NULL)
-// 		return false;
-
-// 	BpTreeNode *CurNode = root;
-
-// 	while (CurNode->getMostLeftChild())
-// 	{
-// 		CurNode = CurNode->getMostLeftChild();
-// 	}
-// 	while(CurNode){
-// 		map<int, FrequentPatternNode *>* Data = CurNode->getDataMap();
-// 		for (auto iter = Data->begin(); iter != Data->end();iter++){ //approach to every data node
-// 			if (iter->first >= min_frequency) //check if frequency is over min_frequency
-// 			{
-// 			multimap<int, set<string>> TEMP = iter->second->getList(); //get the multimap from Frequent node
-// 			for (auto iter2 = TEMP.begin(); iter2 != TEMP.end();iter2++){
-// 				if(iter2->first==4)
-// 				if(iter2->second.find(item)!=iter2->second.end()){
-// 					if (bar == false)
-// 					{
-// 						cout << "========PRINT_BPTREE========" << endl
-// 						<< "FrequentPattern	Frequency" << endl;
-				
-// 						bar = true;
-// 					}
-// 					printFrequentPatterns(iter2->second);
-// 					cout << iter->first << endl;
-	
-// 					}
-// 			}
-// 			}
-// 		}
-// 		CurNode = CurNode->getNext();
-// 		}
-// 		if (bar == false)
-// 		return false;
-// 		cout << "==========================" << endl
-// 			 << endl;
-// 		return true;
-// }
 bool BpTree::printRange(string item, int min, int max)
 {
 
