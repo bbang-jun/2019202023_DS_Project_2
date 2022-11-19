@@ -18,8 +18,7 @@ public:
 		this->order = order;
 		this->fout = fout;
 	}
-	~BpTree();
-	/* essential */
+	
 	ofstream flog;
 	bool		Insert(int key, set<string> set);
 	bool		excessDataNode(BpTreeNode* pDataNode);

@@ -14,18 +14,18 @@ public:
 	ofstream* fout;
 	ofstream flog;
 	ifstream fin;
+
 	Manager(int threshold, int bpOrder)	//constructor
 	{
-		/* You must fill here */
 		fpgrowth = new FPGrowth(fout, threshold);
 		bptree = new BpTree(fout, bpOrder);
 	}
 
 
-	~Manager()//destructor
-	{
-		/* You must fill here */
-	}
+	~Manager(){	
+	delete fpgrowth;
+	delete bptree;
+	}//destructor
 
 	
 

@@ -1,8 +1,1137 @@
+========LOAD========
+Success
+====================
+
 ========BTLOAD========
 Success
 ====================
 
-====PRINT_ITEMLIST===
-ERROR 300
-=====================
+========PRINT_ITEMLIST========
+Item   Frequency
+mineral water 1042
+eggs 792
+french fries 765
+spaghetti 757
+chocolate 723
+green tea 647
+milk 578
+frozen vegetables 464
+burgers 442
+pancakes 421
+ground beef 417
+cake 384
+low fat yogurt 336
+shrimp 321
+escalope 320
+tomatoes 317
+frozen smoothie 297
+whole wheat rice 283
+turkey 281
+chicken 277
+honey 233
+cookies 220
+soup 219
+grated cheese 211
+champagne 209
+fresh bread 207
+salmon 183
+brownies 153
+butter 151
+cottage cheese 150
+avocado 150
+hot dogs 146
+tomato juice 138
+ham 133
+vegetables mix 130
+red wine 130
+light mayo 127
+pepper 126
+energy bar 120
+energy drink 117
+cereals 113
+french wine 112
+yogurt cake 108
+strawberries 103
+fresh tuna 103
+whole wheat pasta 99
+meatballs 98
+almonds 97
+mushroom cream sauce 95
+muffins 95
+parmesan cheese 87
+rice 80
+fromage blanc 74
+pasta 73
+protein bar 72
+mint 72
+carrots 72
+eggplant 71
+white wine 69
+body spray 66
+black tea 64
+gums 60
+barbecue sauce 56
+melons 53
+cider 53
+nonfat milk 52
+magazines 52
+light cream 52
+yams 48
+tomato sauce 47
+whole weat flour 44
+shallot 44
+flax seed 44
+extra dark chocolate 44
+green beans 43
+green grapes 41
+salt 40
+bug spray 40
+antioxydant juice 40
+strong cheese 39
+clothes accessories 37
+zucchini 35
+sparkling water 34
+toothpaste 33
+blueberries 33
+bacon 33
+gluten free bar 32
+pet food 31
+soda 30
+spinach 28
+pickles 28
+candy bars 27
+burger sauce 27
+mayonnaise 26
+dessert wine 24
+shampoo 23
+mint green tea 23
+cauliflower 23
+salad 22
+chocolate bread 22
+hand protein bar 21
+chili 21
+asparagus 21
+tea 18
+oatmeal 18
+mashed potato 18
+corn 18
+babies food 18
+sandwich 17
+ketchup 17
+chutney 14
+bramble 6
+napkins 3
+water spray 2
+cream 2
+energy bar  asparagus 1
+===============================
 
+========PRINT_FPTREE========
+{StandardItem,Frequency} (Path_Item,Frequency)
+{milk, 578}
+(milk, 8) (green tea, 52) (mineral water, 1042) 
+(milk, 29) (french fries, 422) 
+(milk, 32) (spaghetti, 311) 
+(milk, 29) (spaghetti, 176) (mineral water, 1042) 
+(milk, 2) (green tea, 13) (spaghetti, 69) (french fries, 422) 
+(milk, 9) (chocolate, 39) (eggs, 248) (mineral water, 1042) 
+(milk, 2) (chocolate, 4) (spaghetti, 13) (french fries, 33) (eggs, 248) (mineral water, 1042) 
+(milk, 19) (chocolate, 114) (mineral water, 1042) 
+(milk, 20) (eggs, 248) (mineral water, 1042) 
+(milk, 22) (chocolate, 205) 
+(milk, 4) (green tea, 73) (french fries, 422) 
+(milk, 11) (chocolate, 66) (spaghetti, 311) 
+(milk, 2) (green tea, 24) (french fries, 166) (eggs, 544) 
+(milk, 12) (french fries, 166) (eggs, 544) 
+(milk, 2) (green tea, 8) (chocolate, 27) (french fries, 166) (eggs, 544) 
+(milk, 101) 
+(milk, 3) (chocolate, 45) (eggs, 544) 
+(milk, 8) (chocolate, 29) (french fries, 144) (mineral water, 1042) 
+(milk, 2) (chocolate, 8) (spaghetti, 35) (french fries, 144) (mineral water, 1042) 
+(milk, 59) (mineral water, 1042) 
+(milk, 2) (spaghetti, 13) (french fries, 33) (eggs, 248) (mineral water, 1042) 
+(milk, 5) (chocolate, 22) (spaghetti, 84) (eggs, 544) 
+(milk, 31) (green tea, 199) 
+(milk, 3) (french fries, 33) (eggs, 248) (mineral water, 1042) 
+(milk, 3) (green tea, 11) (chocolate, 45) (eggs, 544) 
+(milk, 2) (chocolate, 5) (french fries, 33) (eggs, 248) (mineral water, 1042) 
+(milk, 6) (green tea, 18) (chocolate, 114) (mineral water, 1042) 
+(milk, 6) (spaghetti, 84) (eggs, 544) 
+(milk, 4) (green tea, 44) (eggs, 544) 
+(milk, 9) (chocolate, 84) (french fries, 422) 
+(milk, 34) (eggs, 544) 
+(milk, 3) (green tea, 4) (spaghetti, 25) (french fries, 166) (eggs, 544) 
+(milk, 10) (spaghetti, 44) (eggs, 248) (mineral water, 1042) 
+(milk, 5) (spaghetti, 69) (french fries, 422) 
+(milk, 7) (chocolate, 27) (french fries, 166) (eggs, 544) 
+(milk, 1) (green tea, 11) (spaghetti, 84) (eggs, 544) 
+(milk, 4) (spaghetti, 25) (french fries, 166) (eggs, 544) 
+(milk, 3) (green tea, 19) (eggs, 248) (mineral water, 1042) 
+(milk, 2) (chocolate, 8) (spaghetti, 25) (french fries, 166) (eggs, 544) 
+(milk, 14) (chocolate, 41) (spaghetti, 176) (mineral water, 1042) 
+(milk, 11) (french fries, 144) (mineral water, 1042) 
+(milk, 3) (spaghetti, 35) (french fries, 144) (mineral water, 1042) 
+(milk, 9) (green tea, 40) (spaghetti, 311) 
+(milk, 2) (green tea, 2) (chocolate, 41) (spaghetti, 176) (mineral water, 1042) 
+(milk, 4) (green tea, 16) (french fries, 144) (mineral water, 1042) 
+(milk, 1) (green tea, 5) (spaghetti, 44) (eggs, 248) (mineral water, 1042) 
+(milk, 1) (green tea, 2) (chocolate, 8) (spaghetti, 25) (french fries, 166) (eggs, 544) 
+(milk, 1) (green tea, 3) (chocolate, 14) (spaghetti, 69) (french fries, 422) 
+(milk, 3) (green tea, 18) (chocolate, 66) (spaghetti, 311) 
+(milk, 1) (green tea, 4) (french fries, 33) (eggs, 248) (mineral water, 1042) 
+(milk, 3) (green tea, 12) (chocolate, 84) (french fries, 422) 
+(milk, 2) (chocolate, 14) (spaghetti, 69) (french fries, 422) 
+(milk, 1) (green tea, 16) (spaghetti, 176) (mineral water, 1042) 
+(milk, 2) (chocolate, 11) (spaghetti, 44) (eggs, 248) (mineral water, 1042) 
+(milk, 1) (green tea, 5) (chocolate, 29) (french fries, 144) (mineral water, 1042) 
+(milk, 1) (green tea, 3) (spaghetti, 35) (french fries, 144) (mineral water, 1042) 
+(milk, 1) (green tea, 36) (chocolate, 205) 
+(milk, 1) (green tea, 4) (chocolate, 39) (eggs, 248) (mineral water, 1042) 
+{green tea, 647}
+(green tea, 52) (mineral water, 1042) 
+(green tea, 40) (spaghetti, 311) 
+(green tea, 16) (spaghetti, 176) (mineral water, 1042) 
+(green tea, 199) 
+(green tea, 73) (french fries, 422) 
+(green tea, 18) (chocolate, 66) (spaghetti, 311) 
+(green tea, 13) (spaghetti, 69) (french fries, 422) 
+(green tea, 24) (french fries, 166) (eggs, 544) 
+(green tea, 11) (spaghetti, 84) (eggs, 544) 
+(green tea, 18) (chocolate, 114) (mineral water, 1042) 
+(green tea, 44) (eggs, 544) 
+(green tea, 8) (chocolate, 27) (french fries, 166) (eggs, 544) 
+(green tea, 19) (eggs, 248) (mineral water, 1042) 
+(green tea, 11) (chocolate, 45) (eggs, 544) 
+(green tea, 5) (chocolate, 29) (french fries, 144) (mineral water, 1042) 
+(green tea, 4) (chocolate, 39) (eggs, 248) (mineral water, 1042) 
+(green tea, 16) (french fries, 144) (mineral water, 1042) 
+(green tea, 4) (spaghetti, 25) (french fries, 166) (eggs, 544) 
+(green tea, 3) (chocolate, 22) (spaghetti, 84) (eggs, 544) 
+(green tea, 12) (chocolate, 84) (french fries, 422) 
+(green tea, 5) (spaghetti, 44) (eggs, 248) (mineral water, 1042) 
+(green tea, 36) (chocolate, 205) 
+(green tea, 3) (spaghetti, 35) (french fries, 144) (mineral water, 1042) 
+(green tea, 2) (chocolate, 41) (spaghetti, 176) (mineral water, 1042) 
+(green tea, 3) (chocolate, 14) (spaghetti, 69) (french fries, 422) 
+(green tea, 4) (french fries, 33) (eggs, 248) (mineral water, 1042) 
+(green tea, 2) (chocolate, 8) (spaghetti, 25) (french fries, 166) (eggs, 544) 
+(green tea, 1) (spaghetti, 13) (french fries, 33) (eggs, 248) (mineral water, 1042) 
+(green tea, 1) (chocolate, 11) (spaghetti, 44) (eggs, 248) (mineral water, 1042) 
+{chocolate, 723}
+(chocolate, 45) (eggs, 544) 
+(chocolate, 5) (french fries, 33) (eggs, 248) (mineral water, 1042) 
+(chocolate, 39) (eggs, 248) (mineral water, 1042) 
+(chocolate, 205) 
+(chocolate, 66) (spaghetti, 311) 
+(chocolate, 114) (mineral water, 1042) 
+(chocolate, 22) (spaghetti, 84) (eggs, 544) 
+(chocolate, 8) (spaghetti, 35) (french fries, 144) (mineral water, 1042) 
+(chocolate, 4) (spaghetti, 13) (french fries, 33) (eggs, 248) (mineral water, 1042) 
+(chocolate, 27) (french fries, 166) (eggs, 544) 
+(chocolate, 14) (spaghetti, 69) (french fries, 422) 
+(chocolate, 41) (spaghetti, 176) (mineral water, 1042) 
+(chocolate, 84) (french fries, 422) 
+(chocolate, 29) (french fries, 144) (mineral water, 1042) 
+(chocolate, 8) (spaghetti, 25) (french fries, 166) (eggs, 544) 
+(chocolate, 11) (spaghetti, 44) (eggs, 248) (mineral water, 1042) 
+{spaghetti, 757}
+(spaghetti, 311) 
+(spaghetti, 44) (eggs, 248) (mineral water, 1042) 
+(spaghetti, 176) (mineral water, 1042) 
+(spaghetti, 69) (french fries, 422) 
+(spaghetti, 84) (eggs, 544) 
+(spaghetti, 35) (french fries, 144) (mineral water, 1042) 
+(spaghetti, 13) (french fries, 33) (eggs, 248) (mineral water, 1042) 
+(spaghetti, 25) (french fries, 166) (eggs, 544) 
+{french fries, 765}
+(french fries, 422) 
+(french fries, 33) (eggs, 248) (mineral water, 1042) 
+(french fries, 166) (eggs, 544) 
+(french fries, 144) (mineral water, 1042) 
+{eggs, 792}
+(eggs, 544) 
+(eggs, 248) (mineral water, 1042) 
+{mineral water, 1042}
+(mineral water, 1042) 
+=========================
+
+========PRINT_BPTREE========
+FrequentPattern		Frequency
+{antioxydant juice, milk} 5
+{candy bars, milk} 5
+{dessert wine, milk} 5
+{green grapes, milk} 5
+{milk, oatmeal} 5
+{milk, tea} 5
+{milk, zucchini} 5
+{almonds, french fries, milk} 5
+{avocado, chicken, milk} 5
+{avocado, frozen vegetables, milk} 5
+{avocado, green tea, milk} 5
+{avocado, milk, soup} 5
+{barbecue sauce, milk, mineral water} 5
+{black tea, eggs, milk} 5
+{black tea, green tea, milk} 5
+{brownies, cake, milk} 5
+{brownies, frozen vegetables, milk} 5
+{brownies, milk, spaghetti} 5
+{burger sauce, milk, spaghetti} 5
+{burgers, escalope, milk} 5
+{burgers, french wine, milk} 5
+{burgers, grated cheese, milk} 5
+{butter, french fries, milk} 5
+{butter, ground beef, milk} 5
+{butter, milk, turkey} 5
+{butter, milk, whole wheat rice} 5
+{cake, escalope, milk} 5
+{cake, fresh bread, milk} 5
+{cake, frozen smoothie, milk} 5
+{carrots, milk, mineral water} 5
+{carrots, milk, spaghetti} 5
+{cereals, green tea, milk} 5
+{champagne, escalope, milk} 5
+{champagne, milk, spaghetti} 5
+{chicken, ham, milk} 5
+{chicken, milk, salmon} 5
+{cider, frozen vegetables, milk} 5
+{cider, green tea, milk} 5
+{cookies, milk, spaghetti} 5
+{eggs, meatballs, milk} 5
+{eggs, milk, pepper} 5
+{eggs, milk, tomato juice} 5
+{eggs, milk, vegetables mix} 5
+{energy bar, green tea, milk} 5
+{energy bar, ground beef, milk} 5
+{energy drink, green tea, milk} 5
+{escalope, frozen smoothie, milk} 5
+{escalope, grated cheese, milk} 5
+{escalope, green tea, milk} 5
+{escalope, hot dogs, milk} 5
+{escalope, milk, shrimp} 5
+{escalope, milk, vegetables mix} 5
+{escalope, milk, whole wheat rice} 5
+{extra dark chocolate, milk, mineral water} 5
+{french fries, french wine, milk} 5
+{french fries, fresh tuna, milk} 5
+{french fries, milk, red wine} 5
+{french fries, milk, salmon} 5
+{french fries, milk, whole weat flour} 5
+{french wine, frozen vegetables, milk} 5
+{french wine, ground beef, milk} 5
+{french wine, milk, shrimp} 5
+{fresh bread, fresh tuna, milk} 5
+{fresh bread, ham, milk} 5
+{fresh bread, milk, pancakes} 5
+{fresh bread, milk, salmon} 5
+{fresh bread, milk, tomatoes} 5
+{fresh tuna, frozen vegetables, milk} 5
+{frozen smoothie, milk, salmon} 5
+{frozen smoothie, milk, whole wheat rice} 5
+{frozen vegetables, milk, mushroom cream sauce} 5
+{frozen vegetables, milk, parmesan cheese} 5
+{grated cheese, green tea, milk} 5
+{grated cheese, milk, shrimp} 5
+{grated cheese, milk, tomatoes} 5
+{green tea, milk, salmon} 5
+{ground beef, meatballs, milk} 5
+{ground beef, milk, salmon} 5
+{ground beef, milk, tomato sauce} 5
+{ham, milk, pancakes} 5
+{light mayo, milk, whole wheat rice} 5
+{milk, mineral water, protein bar} 5
+{milk, mineral water, spinach} 5
+{milk, pancakes, whole wheat rice} 5
+{milk, parmesan cheese, tomatoes} 5
+{milk, salmon, shrimp} 5
+{milk, spaghetti, white wine} 5
+{almonds, eggs, milk, mineral water} 5
+{avocado, milk, mineral water, spaghetti} 5
+{burgers, chicken, chocolate, milk} 5
+{burgers, chicken, french fries, milk} 5
+{burgers, chocolate, green tea, milk} 5
+{burgers, chocolate, milk, shrimp} 5
+{burgers, chocolate, milk, turkey} 5
+{burgers, eggs, ham, milk} 5
+{burgers, eggs, milk, shrimp} 5
+{burgers, eggs, milk, turkey} 5
+{burgers, french fries, frozen smoothie, milk} 5
+{burgers, fresh bread, milk, mineral water} 5
+{burgers, frozen smoothie, green tea, milk} 5
+{burgers, frozen vegetables, milk, spaghetti} 5
+{burgers, ham, low fat yogurt, milk} 5
+{burgers, milk, mineral water, turkey} 5
+{burgers, milk, spaghetti, tomatoes} 5
+{cake, chicken, eggs, milk} 5
+{cake, chicken, milk, turkey} 5
+{cake, green tea, milk, mineral water} 5
+{cake, green tea, milk, spaghetti} 5
+{cake, ground beef, milk, spaghetti} 5
+{cake, milk, mineral water, soup} 5
+{cake, milk, mineral water, tomatoes} 5
+{cake, milk, mineral water, whole wheat rice} 5
+{cereals, chocolate, milk, shrimp} 5
+{cereals, frozen vegetables, milk, mineral water} 5
+{cereals, milk, mineral water, shrimp} 5
+{chicken, chocolate, eggs, milk} 5
+{chicken, chocolate, frozen vegetables, milk} 5
+{chicken, eggs, ground beef, milk} 5
+{chicken, eggs, milk, turkey} 5
+{chicken, french fries, grated cheese, milk} 5
+{chicken, french fries, green tea, milk} 5
+{chicken, french fries, ground beef, milk} 5
+{chicken, grated cheese, milk, mineral water} 5
+{chocolate, eggs, ground beef, milk} 5
+{chocolate, eggs, milk, turkey} 5
+{chocolate, escalope, french fries, milk} 5
+{chocolate, french fries, milk, whole wheat pasta} 5
+{chocolate, frozen vegetables, low fat yogurt, milk} 5
+{chocolate, frozen vegetables, milk, tomatoes} 5
+{chocolate, frozen vegetables, milk, turkey} 5
+{chocolate, green tea, milk, turkey} 5
+{chocolate, milk, mineral water, whole wheat rice} 5
+{cookies, french fries, milk, spaghetti} 5
+{eggs, french fries, milk, turkey} 5
+{eggs, frozen smoothie, milk, mineral water} 5
+{eggs, frozen vegetables, low fat yogurt, milk} 5
+{eggs, grated cheese, milk, mineral water} 5
+{eggs, grated cheese, milk, spaghetti} 5
+{eggs, low fat yogurt, milk, pancakes} 5
+{eggs, milk, mineral water, tomatoes} 5
+{eggs, milk, spaghetti, whole wheat pasta} 5
+{energy bar, milk, mineral water, spaghetti} 5
+{escalope, ground beef, milk, mineral water} 5
+{french fries, fresh bread, milk, mineral water} 5
+{french fries, frozen vegetables, green tea, milk} 5
+{french fries, frozen vegetables, milk, pancakes} 5
+{french fries, grated cheese, milk, spaghetti} 5
+{french fries, green tea, milk, shrimp} 5
+{french fries, honey, milk, tomatoes} 5
+{french fries, low fat yogurt, milk, mineral water} 5
+{french fries, low fat yogurt, milk, pancakes} 5
+{french fries, low fat yogurt, milk, shrimp} 5
+{french fries, milk, mineral water, shrimp} 5
+{french fries, milk, pancakes, shrimp} 5
+{french fries, milk, spaghetti, whole wheat pasta} 5
+{frozen smoothie, frozen vegetables, honey, milk} 5
+{frozen smoothie, green tea, milk, mineral water} 5
+{frozen vegetables, grated cheese, milk, spaghetti} 5
+{frozen vegetables, green tea, ground beef, milk} 5
+{frozen vegetables, green tea, milk, mineral water} 5
+{frozen vegetables, ground beef, low fat yogurt, milk} 5
+{frozen vegetables, milk, mineral water, vegetables mix} 5
+{green tea, ground beef, milk, tomatoes} 5
+{green tea, milk, mineral water, spaghetti} 5
+{green tea, milk, spaghetti, turkey} 5
+{ground beef, low fat yogurt, milk, mineral water} 5
+{ground beef, milk, mineral water, shrimp} 5
+{ground beef, milk, mineral water, whole wheat rice} 5
+{ground beef, milk, spaghetti, tomatoes} 5
+{meatballs, milk, mineral water, spaghetti} 5
+{milk, mineral water, pepper, soup} 5
+{milk, mineral water, shrimp, turkey} 5
+{milk, mineral water, spaghetti, strong cheese} 5
+{milk, mineral water, tomato juice, tomatoes} 5
+{milk, mineral water, tomatoes, turkey} 5
+{milk, mineral water, tomatoes, vegetables mix} 5
+{milk, spaghetti, turkey, whole wheat rice} 5
+{burgers, chocolate, eggs, milk, spaghetti} 5
+{burgers, eggs, french fries, milk, spaghetti} 5
+{burgers, french fries, milk, mineral water, spaghetti} 5
+{cake, chicken, milk, mineral water, turkey} 5
+{chicken, eggs, milk, mineral water, turkey} 5
+{chocolate, eggs, french fries, low fat yogurt, milk} 5
+{chocolate, eggs, french fries, milk, spaghetti} 5
+{chocolate, french fries, frozen vegetables, milk, mineral water} 5
+{chocolate, ground beef, milk, mineral water, spaghetti} 5
+{eggs, frozen vegetables, ground beef, milk, mineral water} 5
+{frozen vegetables, ground beef, milk, mineral water, soup} 5
+{frozen vegetables, milk, mineral water, tomatoes, vegetables mix} 5
+{grated cheese, ground beef, milk, mineral water, turkey} 5
+{milk, mineral water, spaghetti, tomatoes, whole wheat rice} 5
+{chocolate, frozen vegetables, ground beef, milk, mineral water, spaghetti} 5
+{babies food, milk} 6
+{bacon, milk} 6
+{body spray, milk} 6
+{bug spray, milk} 6
+{burger sauce, milk} 6
+{flax seed, milk} 6
+{milk, salad} 6
+{milk, salt} 6
+{milk, sparkling water} 6
+{almonds, burgers, milk} 6
+{almonds, chocolate, milk} 6
+{almonds, green tea, milk} 6
+{almonds, milk, spaghetti} 6
+{avocado, french fries, milk} 6
+{black tea, chocolate, milk} 6
+{black tea, frozen smoothie, milk} 6
+{brownies, eggs, milk} 6
+{burgers, cookies, milk} 6
+{butter, chicken, milk} 6
+{butter, chocolate, milk} 6
+{butter, frozen vegetables, milk} 6
+{butter, green tea, milk} 6
+{butter, milk, pancakes} 6
+{butter, milk, shrimp} 6
+{cereals, french fries, milk} 6
+{cereals, ground beef, milk} 6
+{champagne, chocolate, milk} 6
+{champagne, eggs, milk} 6
+{champagne, french fries, milk} 6
+{chicken, milk, pancakes} 6
+{chicken, milk, tomatoes} 6
+{chocolate, cookies, milk} 6
+{chocolate, french wine, milk} 6
+{chocolate, milk, pepper} 6
+{chocolate, milk, white wine} 6
+{cider, milk, mineral water} 6
+{cookies, milk, mineral water} 6
+{cottage cheese, milk, pancakes} 6
+{eggs, escalope, milk} 6
+{energy bar, frozen vegetables, milk} 6
+{energy drink, french fries, milk} 6
+{escalope, ground beef, milk} 6
+{french fries, light mayo, milk} 6
+{french fries, milk, muffins} 6
+{french wine, frozen smoothie, milk} 6
+{fresh bread, honey, milk} 6
+{fresh bread, low fat yogurt, milk} 6
+{fresh tuna, frozen smoothie, milk} 6
+{frozen smoothie, honey, milk} 6
+{frozen smoothie, milk, tomato juice} 6
+{frozen smoothie, milk, turkey} 6
+{frozen vegetables, milk, tomato juice} 6
+{grated cheese, milk, whole wheat rice} 6
+{green tea, milk, tomato juice} 6
+{green tea, milk, whole wheat rice} 6
+{ground beef, milk, whole wheat pasta} 6
+{ham, low fat yogurt, milk} 6
+{ham, milk, whole wheat rice} 6
+{honey, milk, pancakes} 6
+{light mayo, milk, mineral water} 6
+{low fat yogurt, milk, tomatoes} 6
+{low fat yogurt, milk, whole wheat rice} 6
+{milk, mineral water, whole wheat pasta} 6
+{milk, pancakes, salmon} 6
+{milk, pancakes, turkey} 6
+{milk, parmesan cheese, spaghetti} 6
+{milk, pasta, shrimp} 6
+{milk, pepper, soup} 6
+{milk, pepper, spaghetti} 6
+{milk, red wine, spaghetti} 6
+{milk, salmon, soup} 6
+{milk, soup, turkey} 6
+{milk, spaghetti, strawberries} 6
+{milk, spaghetti, tomato sauce} 6
+{burgers, cookies, french fries, milk} 6
+{burgers, french fries, low fat yogurt, milk} 6
+{burgers, green tea, milk, mineral water} 6
+{burgers, milk, mineral water, tomatoes} 6
+{burgers, milk, mineral water, whole wheat rice} 6
+{cereals, chocolate, milk, mineral water} 6
+{cereals, milk, mineral water, spaghetti} 6
+{chicken, chocolate, frozen smoothie, milk} 6
+{chicken, chocolate, milk, spaghetti} 6
+{chicken, frozen smoothie, milk, mineral water} 6
+{chicken, ground beef, milk, spaghetti} 6
+{chicken, milk, mineral water, turkey} 6
+{chocolate, eggs, milk, pancakes} 6
+{chocolate, energy bar, milk, mineral water} 6
+{chocolate, french fries, frozen smoothie, milk} 6
+{chocolate, french fries, milk, tomatoes} 6
+{chocolate, frozen smoothie, green tea, milk} 6
+{chocolate, frozen smoothie, milk, spaghetti} 6
+{chocolate, frozen vegetables, milk, soup} 6
+{chocolate, ground beef, milk, shrimp} 6
+{chocolate, milk, mineral water, tomatoes} 6
+{chocolate, milk, pancakes, shrimp} 6
+{chocolate, milk, pancakes, spaghetti} 6
+{chocolate, milk, salmon, spaghetti} 6
+{chocolate, milk, spaghetti, turkey} 6
+{chocolate, milk, spaghetti, whole wheat rice} 6
+{cookies, eggs, french fries, milk} 6
+{cottage cheese, milk, mineral water, spaghetti} 6
+{eggs, french fries, fresh bread, milk} 6
+{eggs, french fries, milk, tomatoes} 6
+{eggs, frozen vegetables, milk, spaghetti} 6
+{eggs, green tea, milk, mineral water} 6
+{eggs, green tea, milk, spaghetti} 6
+{eggs, milk, mineral water, shrimp} 6
+{escalope, milk, mineral water, salmon} 6
+{french fries, ground beef, milk, spaghetti} 6
+{french fries, milk, pancakes, spaghetti} 6
+{french fries, milk, spaghetti, tomatoes} 6
+{fresh bread, frozen vegetables, milk, mineral water} 6
+{fresh bread, green tea, milk, mineral water} 6
+{fresh bread, milk, mineral water, shrimp} 6
+{frozen vegetables, low fat yogurt, milk, spaghetti} 6
+{frozen vegetables, milk, mineral water, pancakes} 6
+{frozen vegetables, milk, mineral water, turkey} 6
+{frozen vegetables, milk, spaghetti, tomatoes} 6
+{frozen vegetables, milk, tomatoes, vegetables mix} 6
+{grated cheese, ground beef, milk, mineral water} 6
+{grated cheese, ground beef, milk, spaghetti} 6
+{grated cheese, ground beef, milk, turkey} 6
+{grated cheese, milk, mineral water, turkey} 6
+{green tea, milk, spaghetti, tomatoes} 6
+{ground beef, low fat yogurt, milk, spaghetti} 6
+{ground beef, milk, mineral water, pancakes} 6
+{low fat yogurt, milk, mineral water, pancakes} 6
+{low fat yogurt, milk, pancakes, spaghetti} 6
+{milk, mineral water, pancakes, shrimp} 6
+{milk, mineral water, spaghetti, whole wheat rice} 6
+{milk, mineral water, turkey, whole wheat rice} 6
+{milk, spaghetti, tomatoes, whole wheat rice} 6
+{burgers, chocolate, eggs, french fries, milk} 6
+{burgers, chocolate, french fries, milk, mineral water} 6
+{burgers, chocolate, french fries, milk, spaghetti} 6
+{cake, eggs, milk, mineral water, turkey} 6
+{chocolate, frozen vegetables, milk, mineral water, shrimp} 6
+{chocolate, milk, mineral water, shrimp, spaghetti} 6
+{frozen vegetables, ground beef, milk, mineral water, spaghetti} 6
+{frozen vegetables, milk, mineral water, shrimp, spaghetti} 6
+{asparagus, milk} 7
+{clothes accessories, milk} 7
+{gums, milk} 7
+{milk, spinach} 7
+{almonds, milk, tomatoes} 7
+{black tea, milk, mineral water} 7
+{black tea, milk, spaghetti} 7
+{brownies, ground beef, milk} 7
+{burgers, cereals, milk} 7
+{burgers, fresh bread, milk} 7
+{burgers, milk, pancakes} 7
+{cake, milk, soup} 7
+{cereals, frozen vegetables, milk} 7
+{cereals, milk, pancakes} 7
+{cereals, milk, shrimp} 7
+{chicken, milk, shrimp} 7
+{chicken, milk, turkey} 7
+{chicken, milk, whole wheat rice} 7
+{chocolate, ham, milk} 7
+{chocolate, milk, vegetables mix} 7
+{cider, eggs, milk} 7
+{cookies, eggs, milk} 7
+{eggs, french wine, milk} 7
+{energy bar, frozen smoothie, milk} 7
+{energy bar, milk, spaghetti} 7
+{french fries, milk, tomato juice} 7
+{fresh bread, frozen smoothie, milk} 7
+{fresh bread, frozen vegetables, milk} 7
+{fresh bread, green tea, milk} 7
+{fresh tuna, milk, mineral water} 7
+{frozen vegetables, honey, milk} 7
+{frozen vegetables, light mayo, milk} 7
+{frozen vegetables, milk, whole wheat pasta} 7
+{green tea, milk, pancakes} 7
+{green tea, milk, whole wheat pasta} 7
+{ground beef, light mayo, milk} 7
+{ham, milk, spaghetti} 7
+{honey, milk, turkey} 7
+{hot dogs, milk, mineral water} 7
+{hot dogs, milk, spaghetti} 7
+{low fat yogurt, milk, soup} 7
+{milk, mineral water, mint} 7
+{milk, mineral water, rice} 7
+{milk, mineral water, yogurt cake} 7
+{milk, pancakes, soup} 7
+{milk, salmon, tomatoes} 7
+{milk, shrimp, turkey} 7
+{milk, shrimp, whole wheat pasta} 7
+{milk, shrimp, whole wheat rice} 7
+{milk, spaghetti, strong cheese} 7
+{milk, spaghetti, tomato juice} 7
+{milk, tomatoes, vegetables mix} 7
+{burgers, cake, french fries, milk} 7
+{burgers, chocolate, milk, tomatoes} 7
+{burgers, eggs, low fat yogurt, milk} 7
+{burgers, french fries, ham, milk} 7
+{burgers, french fries, milk, tomatoes} 7
+{burgers, frozen vegetables, milk, mineral water} 7
+{burgers, ground beef, milk, spaghetti} 7
+{cake, chicken, milk, mineral water} 7
+{cake, eggs, french fries, milk} 7
+{cake, french fries, green tea, milk} 7
+{cake, frozen vegetables, milk, mineral water} 7
+{cake, ground beef, milk, mineral water} 7
+{chicken, eggs, milk, spaghetti} 7
+{chicken, french fries, milk, spaghetti} 7
+{chocolate, eggs, green tea, milk} 7
+{chocolate, eggs, low fat yogurt, milk} 7
+{chocolate, escalope, milk, mineral water} 7
+{chocolate, french fries, milk, shrimp} 7
+{chocolate, green tea, milk, spaghetti} 7
+{chocolate, low fat yogurt, milk, spaghetti} 7
+{chocolate, milk, mineral water, salmon} 7
+{chocolate, milk, shrimp, spaghetti} 7
+{chocolate, milk, spaghetti, tomatoes} 7
+{cookies, french fries, green tea, milk} 7
+{eggs, french fries, low fat yogurt, milk} 7
+{eggs, french fries, milk, pancakes} 7
+{eggs, frozen vegetables, green tea, milk} 7
+{eggs, frozen vegetables, ground beef, milk} 7
+{eggs, low fat yogurt, milk, spaghetti} 7
+{eggs, milk, pancakes, spaghetti} 7
+{escalope, milk, mineral water, spaghetti} 7
+{french fries, green tea, milk, mineral water} 7
+{french fries, ground beef, milk, mineral water} 7
+{french fries, low fat yogurt, milk, spaghetti} 7
+{french fries, milk, mineral water, tomatoes} 7
+{french wine, milk, mineral water, spaghetti} 7
+{frozen smoothie, milk, spaghetti, tomatoes} 7
+{frozen vegetables, ground beef, milk, soup} 7
+{frozen vegetables, milk, mineral water, whole wheat rice} 7
+{frozen vegetables, milk, shrimp, spaghetti} 7
+{grated cheese, milk, mineral water, spaghetti} 7
+{ground beef, milk, soup, spaghetti} 7
+{ground beef, milk, spaghetti, turkey} 7
+{milk, mineral water, pancakes, spaghetti} 7
+{milk, mineral water, salmon, spaghetti} 7
+{milk, mineral water, shrimp, soup} 7
+{milk, mineral water, tomatoes, whole wheat rice} 7
+{milk, spaghetti, tomatoes, turkey} 7
+{chocolate, frozen vegetables, ground beef, milk, spaghetti} 7
+{fromage blanc, milk} 8
+{light cream, milk} 8
+{milk, pasta} 8
+{avocado, milk, spaghetti} 8
+{brownies, french fries, milk} 8
+{burgers, chicken, milk} 8
+{butter, milk, spaghetti} 8
+{cake, chocolate, milk} 8
+{cake, milk, whole wheat rice} 8
+{cereals, chocolate, milk} 8
+{cereals, milk, spaghetti} 8
+{chicken, fresh bread, milk} 8
+{chocolate, energy bar, milk} 8
+{chocolate, grated cheese, milk} 8
+{chocolate, milk, whole wheat pasta} 8
+{cider, french fries, milk} 8
+{cider, milk, spaghetti} 8
+{cookies, green tea, milk} 8
+{cottage cheese, milk, mineral water} 8
+{cottage cheese, milk, spaghetti} 8
+{eggs, energy bar, milk} 8
+{eggs, grated cheese, milk} 8
+{escalope, french fries, milk} 8
+{french fries, meatballs, milk} 8
+{fresh bread, ground beef, milk} 8
+{frozen vegetables, grated cheese, milk} 8
+{frozen vegetables, milk, vegetables mix} 8
+{grated cheese, milk, turkey} 8
+{green tea, honey, milk} 8
+{ground beef, honey, milk} 8
+{ground beef, low fat yogurt, milk} 8
+{ham, milk, shrimp} 8
+{honey, milk, soup} 8
+{honey, milk, tomatoes} 8
+{low fat yogurt, milk, shrimp} 8
+{meatballs, milk, whole wheat pasta} 8
+{milk, mineral water, nonfat milk} 8
+{milk, mineral water, strong cheese} 8
+{milk, pancakes, tomatoes} 8
+{milk, shrimp, tomatoes} 8
+{milk, tomato juice, tomatoes} 8
+{burgers, cake, milk, mineral water} 8
+{burgers, chocolate, frozen vegetables, milk} 8
+{burgers, eggs, milk, spaghetti} 8
+{burgers, french fries, milk, shrimp} 8
+{burgers, green tea, milk, spaghetti} 8
+{burgers, ground beef, milk, mineral water} 8
+{burgers, milk, mineral water, spaghetti} 8
+{cake, eggs, milk, mineral water} 8
+{cake, eggs, milk, turkey} 8
+{cake, french fries, milk, mineral water} 8
+{cake, milk, mineral water, spaghetti} 8
+{chicken, chocolate, french fries, milk} 8
+{chicken, eggs, french fries, milk} 8
+{chicken, french fries, milk, mineral water} 8
+{chicken, green tea, milk, mineral water} 8
+{chocolate, eggs, frozen vegetables, milk} 8
+{chocolate, french fries, green tea, milk} 8
+{chocolate, french fries, low fat yogurt, milk} 8
+{chocolate, french fries, milk, pancakes} 8
+{chocolate, frozen vegetables, milk, shrimp} 8
+{chocolate, milk, mineral water, turkey} 8
+{eggs, french fries, ham, milk} 8
+{eggs, fresh bread, milk, mineral water} 8
+{eggs, low fat yogurt, milk, mineral water} 8
+{eggs, milk, mineral water, pancakes} 8
+{french fries, green tea, milk, spaghetti} 8
+{french fries, milk, mineral water, pancakes} 8
+{frozen vegetables, low fat yogurt, milk, mineral water} 8
+{green tea, ground beef, milk, spaghetti} 8
+{ground beef, milk, mineral water, tomatoes} 8
+{milk, mineral water, soup, spaghetti} 8
+{milk, mineral water, soup, tomatoes} 8
+{chocolate, frozen vegetables, milk, mineral water, spaghetti} 8
+{barbecue sauce, milk} 9
+{eggplant, milk} 9
+{extra dark chocolate, milk} 9
+{magazines, milk} 9
+{melons, milk} 9
+{milk, mint green tea} 9
+{milk, tomato sauce} 9
+{milk, whole weat flour} 9
+{almonds, eggs, milk} 9
+{brownies, milk, mineral water} 9
+{burgers, honey, milk} 9
+{burgers, low fat yogurt, milk} 9
+{burgers, milk, soup} 9
+{cake, chicken, milk} 9
+{cake, milk, shrimp} 9
+{champagne, milk, mineral water} 9
+{chicken, grated cheese, milk} 9
+{eggs, milk, salmon} 9
+{eggs, milk, tomatoes} 9
+{eggs, milk, whole wheat pasta} 9
+{escalope, milk, salmon} 9
+{french fries, grated cheese, milk} 9
+{french fries, milk, whole wheat rice} 9
+{fresh bread, milk, spaghetti} 9
+{frozen smoothie, milk, tomatoes} 9
+{frozen vegetables, milk, salmon} 9
+{frozen vegetables, milk, turkey} 9
+{grated cheese, ground beef, milk} 9
+{green tea, low fat yogurt, milk} 9
+{green tea, milk, soup} 9
+{green tea, milk, turkey} 9
+{ground beef, milk, shrimp} 9
+{ham, milk, mineral water} 9
+{honey, milk, spaghetti} 9
+{milk, pancakes, whole wheat pasta} 9
+{burgers, chocolate, eggs, milk} 9
+{burgers, french fries, green tea, milk} 9
+{cake, milk, mineral water, turkey} 9
+{chicken, eggs, milk, mineral water} 9
+{chocolate, frozen smoothie, milk, mineral water} 9
+{chocolate, ground beef, milk, spaghetti} 9
+{chocolate, low fat yogurt, milk, mineral water} 9
+{chocolate, milk, mineral water, soup} 9
+{eggs, french fries, frozen vegetables, milk} 9
+{eggs, french fries, green tea, milk} 9
+{eggs, milk, mineral water, turkey} 9
+{french fries, frozen vegetables, milk, mineral water} 9
+{ground beef, milk, mineral water, soup} 9
+{ground beef, milk, mineral water, turkey} 9
+{low fat yogurt, milk, mineral water, spaghetti} 9
+{milk, mineral water, spaghetti, turkey} 9
+{chocolate, frozen vegetables, ground beef, milk, mineral water} 9
+{green beans, milk} 10
+{milk, nonfat milk} 10
+{milk, yams} 10
+{almonds, milk, mineral water} 10
+{avocado, milk, mineral water} 10
+{burgers, frozen smoothie, milk} 10
+{cake, milk, tomatoes} 10
+{eggs, ham, milk} 10
+{eggs, milk, whole wheat rice} 10
+{escalope, frozen vegetables, milk} 10
+{escalope, milk, spaghetti} 10
+{french fries, milk, vegetables mix} 10
+{french wine, milk, spaghetti} 10
+{frozen smoothie, frozen vegetables, milk} 10
+{frozen smoothie, low fat yogurt, milk} 10
+{frozen smoothie, milk, shrimp} 10
+{low fat yogurt, milk, pancakes} 10
+{milk, mineral water, pepper} 10
+{milk, salmon, spaghetti} 10
+{milk, shrimp, soup} 10
+{milk, soup, whole wheat rice} 10
+{milk, tomatoes, whole wheat rice} 10
+{milk, turkey, whole wheat rice} 10
+{burgers, chocolate, milk, mineral water} 10
+{chocolate, french fries, milk, spaghetti} 10
+{chocolate, green tea, milk, mineral water} 10
+{chocolate, milk, mineral water, pancakes} 10
+{eggs, french fries, milk, mineral water} 10
+{eggs, milk, spaghetti, turkey} 10
+{french fries, milk, mineral water, spaghetti} 10
+{frozen vegetables, ground beef, milk, spaghetti} 10
+{frozen vegetables, milk, mineral water, tomatoes} 10
+{milk, protein bar} 11
+{milk, rice} 11
+{milk, strawberries} 11
+{burgers, ham, milk} 11
+{burgers, milk, turkey} 11
+{burgers, milk, whole wheat rice} 11
+{cake, frozen vegetables, milk} 11
+{cake, ground beef, milk} 11
+{chicken, ground beef, milk} 11
+{chocolate, fresh bread, milk} 11
+{chocolate, milk, whole wheat rice} 11
+{eggs, frozen smoothie, milk} 11
+{french fries, milk, turkey} 11
+{fresh bread, milk, shrimp} 11
+{frozen vegetables, milk, pancakes} 11
+{green tea, milk, shrimp} 11
+{green tea, milk, tomatoes} 11
+{ground beef, milk, whole wheat rice} 11
+{meatballs, milk, mineral water} 11
+{milk, mineral water, red wine} 11
+{milk, tomatoes, turkey} 11
+{chicken, chocolate, milk, mineral water} 11
+{chocolate, french fries, frozen vegetables, milk} 11
+{chocolate, frozen vegetables, ground beef, milk} 11
+{eggs, frozen vegetables, milk, mineral water} 11
+{frozen vegetables, milk, mineral water, shrimp} 11
+{carrots, milk} 12
+{milk, strong cheese} 12
+{chicken, frozen vegetables, milk} 12
+{cookies, french fries, milk} 12
+{french fries, ham, milk} 12
+{french fries, milk, whole wheat pasta} 12
+{ground beef, milk, pancakes} 12
+{ground beef, milk, tomatoes} 12
+{honey, milk, mineral water} 12
+{meatballs, milk, spaghetti} 12
+{milk, mineral water, vegetables mix} 12
+{milk, pancakes, shrimp} 12
+{milk, soup, tomatoes} 12
+{burgers, chocolate, milk, spaghetti} 12
+{burgers, eggs, french fries, milk} 12
+{burgers, eggs, milk, mineral water} 12
+{burgers, french fries, milk, mineral water} 12
+{burgers, french fries, milk, spaghetti} 12
+{chicken, milk, mineral water, spaghetti} 12
+{chocolate, eggs, milk, spaghetti} 12
+{eggs, ground beef, milk, mineral water} 12
+{eggs, ground beef, milk, spaghetti} 12
+{frozen vegetables, milk, mineral water, soup} 12
+{milk, mushroom cream sauce} 13
+{milk, yogurt cake} 13
+{burgers, frozen vegetables, milk} 13
+{butter, eggs, milk} 13
+{cake, milk, turkey} 13
+{chicken, frozen smoothie, milk} 13
+{chicken, green tea, milk} 13
+{chocolate, escalope, milk} 13
+{chocolate, milk, salmon} 13
+{chocolate, milk, soup} 13
+{energy bar, milk, mineral water} 13
+{french fries, honey, milk} 13
+{french wine, milk, mineral water} 13
+{milk, mineral water, tomato juice} 13
+{milk, spaghetti, whole wheat rice} 13
+{chocolate, frozen vegetables, milk, spaghetti} 13
+{chocolate, ground beef, milk, mineral water} 13
+{frozen smoothie, milk, mineral water, spaghetti} 13
+{milk, mineral water, shrimp, spaghetti} 13
+{milk, mint} 14
+{milk, muffins} 14
+{milk, parmesan cheese} 14
+{burgers, cake, milk} 14
+{burgers, ground beef, milk} 14
+{burgers, milk, shrimp} 14
+{burgers, milk, tomatoes} 14
+{french fries, frozen smoothie, milk} 14
+{frozen smoothie, green tea, milk} 14
+{frozen vegetables, low fat yogurt, milk} 14
+{ground beef, milk, soup} 14
+{ground beef, milk, turkey} 14
+{milk, spaghetti, whole wheat pasta} 14
+{eggs, french fries, milk, spaghetti} 14
+{frozen vegetables, milk, mineral water, spaghetti} 14
+{energy drink, milk} 15
+{hot dogs, milk} 15
+{cake, green tea, milk} 15
+{cake, milk, spaghetti} 15
+{eggs, fresh bread, milk} 15
+{french fries, fresh bread, milk} 15
+{french fries, ground beef, milk} 15
+{frozen vegetables, milk, soup} 15
+{frozen vegetables, milk, whole wheat rice} 15
+{milk, soup, spaghetti} 15
+{burgers, chocolate, french fries, milk} 15
+{chocolate, french fries, milk, mineral water} 15
+{frozen vegetables, ground beef, milk, mineral water} 15
+{milk, mineral water, spaghetti, tomatoes} 15
+{black tea, milk} 16
+{fresh tuna, milk} 16
+{light mayo, milk} 16
+{cereals, milk, mineral water} 16
+{chocolate, milk, tomatoes} 16
+{eggs, low fat yogurt, milk} 16
+{eggs, milk, shrimp} 16
+{french fries, low fat yogurt, milk} 16
+{frozen vegetables, green tea, milk} 16
+{grated cheese, milk, mineral water} 16
+{green tea, ground beef, milk} 16
+{chocolate, eggs, french fries, milk} 16
+{chocolate, eggs, milk, mineral water} 16
+{chocolate, frozen vegetables, milk, mineral water} 16
+{milk, white wine} 17
+{cake, eggs, milk} 17
+{chicken, french fries, milk} 17
+{chocolate, milk, turkey} 17
+{french fries, milk, pancakes} 17
+{grated cheese, milk, spaghetti} 17
+{milk, mineral water, salmon} 17
+{milk, pancakes, spaghetti} 17
+{chocolate, milk, mineral water, shrimp} 17
+{eggs, milk, mineral water, spaghetti} 17
+{milk, red wine} 18
+{chocolate, frozen smoothie, milk} 18
+{chocolate, low fat yogurt, milk} 18
+{eggs, milk, turkey} 18
+{french fries, milk, shrimp} 18
+{french fries, milk, tomatoes} 18
+{frozen vegetables, milk, tomatoes} 18
+{ground beef, milk, mineral water, spaghetti} 18
+{cider, milk} 19
+{chocolate, milk, pancakes} 19
+{escalope, milk, mineral water} 19
+{frozen vegetables, milk, shrimp} 19
+{low fat yogurt, milk, spaghetti} 19
+{cottage cheese, milk} 20
+{cake, french fries, milk} 20
+{chicken, chocolate, milk} 20
+{frozen smoothie, milk, spaghetti} 20
+{milk, pepper} 21
+{burgers, green tea, milk} 21
+{chicken, eggs, milk} 21
+{chicken, milk, spaghetti} 21
+{chocolate, ground beef, milk} 21
+{fresh bread, milk, mineral water} 21
+{milk, shrimp, spaghetti} 21
+{milk, spaghetti, turkey} 21
+{almonds, milk} 22
+{cookies, milk} 22
+{eggs, green tea, milk} 22
+{eggs, ground beef, milk} 22
+{eggs, milk, pancakes} 22
+{frozen vegetables, ground beef, milk} 22
+{chocolate, milk, mineral water, spaghetti} 22
+{brownies, milk} 24
+{milk, vegetables mix} 24
+{chocolate, green tea, milk} 24
+{low fat yogurt, milk, mineral water} 24
+{milk, spaghetti, tomatoes} 24
+{french wine, milk} 25
+{burgers, chocolate, milk} 25
+{chocolate, milk, shrimp} 25
+{french fries, green tea, milk} 25
+{frozen smoothie, milk, mineral water} 25
+{green tea, milk, spaghetti} 25
+{milk, mineral water, whole wheat rice} 25
+{ham, milk} 26
+{meatballs, milk} 26
+{milk, tomato juice} 26
+{avocado, milk} 27
+{burgers, eggs, milk} 27
+{burgers, milk, spaghetti} 27
+{chicken, milk, mineral water} 27
+{french fries, frozen vegetables, milk} 27
+{milk, mineral water, turkey} 27
+{champagne, milk} 28
+{cake, milk, mineral water} 28
+{frozen vegetables, milk, spaghetti} 28
+{cereals, milk} 29
+{eggs, frozen vegetables, milk} 29
+{green tea, milk, mineral water} 29
+{french fries, milk, spaghetti} 30
+{milk, mineral water, pancakes} 30
+{butter, milk} 31
+{energy bar, milk} 32
+{milk, mineral water, tomatoes} 32
+{burgers, french fries, milk} 33
+{chocolate, frozen vegetables, milk} 33
+{milk, mineral water, soup} 33
+{burgers, milk, mineral water} 34
+{grated cheese, milk} 35
+{honey, milk} 36
+{milk, mineral water, shrimp} 37
+{escalope, milk} 39
+{chocolate, eggs, milk} 39
+{eggs, milk, spaghetti} 39
+{milk, whole wheat pasta} 40
+{french fries, milk, mineral water} 40
+{milk, salmon} 42
+{chocolate, french fries, milk} 42
+{ground beef, milk, spaghetti} 42
+{eggs, french fries, milk} 43
+{frozen vegetables, milk, mineral water} 43
+{chocolate, milk, spaghetti} 47
+{ground beef, milk, mineral water} 47
+{fresh bread, milk} 49
+{milk, turkey} 51
+{milk, whole wheat rice} 56
+{eggs, milk, mineral water} 56
+{milk, soup} 59
+{low fat yogurt, milk} 60
+{cake, milk} 61
+{frozen smoothie, milk} 61
+{chicken, milk} 64
+{milk, tomatoes} 67
+{chocolate, milk, mineral water} 68
+{milk, pancakes} 69
+{milk, mineral water, spaghetti} 69
+{milk, shrimp} 81
+{burgers, milk} 87
+{ground beef, milk} 94
+{green tea, milk} 99
+{frozen vegetables, milk} 105
+{french fries, milk} 128
+{chocolate, milk} 143
+{eggs, milk} 145
+{milk, spaghetti} 156
+{milk, mineral water} 224
+==========================
+
+========PRINT_CONFIDENCE========
+FrequentPattern Frequency	Confidence
+{frozen vegetables, milk} 105 0.181661
+{french fries, milk} 128 0.221453
+{chocolate, milk} 143 0.247405
+{eggs, milk} 145 0.250865
+{milk, spaghetti} 156 0.269896
+{milk, mineral water} 224 0.387543
+=================================
+
+========PRINT_RANGE========
+FrequentPattern Frequency
+{cereals, milk} 29
+{eggs, frozen vegetables, milk} 29
+{green tea, milk, mineral water} 29
+{french fries, milk, spaghetti} 30
+{milk, mineral water, pancakes} 30
+{butter, milk} 31
+{energy bar, milk} 32
+{milk, mineral water, tomatoes} 32
+{burgers, french fries, milk} 33
+{chocolate, frozen vegetables, milk} 33
+{milk, mineral water, soup} 33
+{burgers, milk, mineral water} 34
+{grated cheese, milk} 35
+{honey, milk} 36
+{milk, mineral water, shrimp} 37
+{escalope, milk} 39
+{chocolate, eggs, milk} 39
+{eggs, milk, spaghetti} 39
+{milk, whole wheat pasta} 40
+{french fries, milk, mineral water} 40
+{milk, salmon} 42
+{chocolate, french fries, milk} 42
+{ground beef, milk, spaghetti} 42
+{eggs, french fries, milk} 43
+{frozen vegetables, milk, mineral water} 43
+{chocolate, milk, spaghetti} 47
+{ground beef, milk, mineral water} 47
+{fresh bread, milk} 49
+{milk, turkey} 51
+{milk, whole wheat rice} 56
+{eggs, milk, mineral water} 56
+{milk, soup} 59
+{low fat yogurt, milk} 60
+{cake, milk} 61
+{frozen smoothie, milk} 61
+{chicken, milk} 64
+{milk, tomatoes} 67
+{chocolate, milk, mineral water} 68
+{milk, pancakes} 69
+{milk, mineral water, spaghetti} 69
+=============================
+
+=======EXIT========
+Success
+===================

@@ -366,7 +366,7 @@ bool BpTree::printConfidence(string item, double item_frequency, double min_conf
 		moveNode = moveNode->getNext(); //move moveNode to next
 	}
 
-	flog<<"================================="<<endl;
+	flog<<"================================="<<endl<<endl;
 	return true;
 }
 // bool BpTree::printFrequency(string item, int min_frequency) // print winratio in ascending order

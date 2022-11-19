@@ -58,7 +58,17 @@ void Manager::run(const char* command)
 				flog<<"=========================="<<endl<<endl;
 				continue;
 			}
-			double confidence = stod(tokConfidence);
+			double confidence;
+			try{ // if tokConfidence is not number
+				confidence = stod(tokConfidence);
+				confidence = (round((int)(confidence*100))/100.0);
+			}
+			catch(const invalid_argument &){
+				flog<<"========PRINT_CONFIDENCE========"<<endl;
+				flog<<"ERROR 600"<<endl;
+				flog<<"=========================="<<endl<<endl;
+				continue;
+			}
 			PRINT_CONFIDENCE(tokItem, confidence);
 		}
 		else if(commandFromtxt=="PRINT_RANGE"){
@@ -72,15 +82,29 @@ void Manager::run(const char* command)
 				flog<<"=========================="<<endl<<endl;
 				continue;
 			}
-			int firstRange = atoi(tokFirstRange);
-			int secondRange = atoi(tokSecondRange);
+			int firstRange, secondRange;
+			try{
+				firstRange = stoi(tokFirstRange);
+				secondRange = stoi(tokSecondRange);
+			}
+			catch(const invalid_argument &){
+				flog<<"========PRINT_Range========"<<endl;
+				flog<<"ERROR 700"<<endl;
+				flog<<"=========================="<<endl<<endl;
+				continue;
+			}
+
 			PRINT_RANGE(tokItem, firstRange, secondRange);
 		}
 		else if(commandFromtxt=="SAVE"){
 			SAVE();
 		}
 		else if(commandFromtxt=="EXIT"){
+			flog<<"=======EXIT========"<<endl;
+			flog<<"Success"<<endl;
+			flog<<"==================="<<endl;
 
+			break;
 		}
 	}
 	fin.close();
@@ -248,16 +272,16 @@ bool Manager::BTLOAD()
 
 bool Manager::PRINT_ITEMLIST() {
 	if(fpgrowth->getHeaderTable()->getindexTable().empty()==true){
-		flog<<"====PRINT_ITEMLIST==="<<endl;
+		flog<<"========PRINT_ITEMLIST========"<<endl;
 		flog<<"ERROR 300"<<endl;
-		flog<<"====================="<<endl<<endl;
+		flog<<"=============================="<<endl<<endl;
 		return true;
 	}
-	flog<<"====PRINT_ITEMLIST==="<<endl;
+	flog<<"========PRINT_ITEMLIST========"<<endl;
 	flog<<"Item   Frequency"<<endl;
 	fpgrowth->getHeaderTable()->descendingIndexTable(); // adpat descending to indexTable
 	fpgrowth->getHeaderTable()->PRINT_ITEMLIST(); // print indexTable
-	flog<<"======================="<<endl<<endl;
+	flog<<"==============================="<<endl<<endl;
 
 	//fpgrowth->getHeaderTable()->printThresholdTable(); // print eliminate of below the threshold
 	//fpgrowth->getHeaderTable()->first(); // print dataTable
@@ -266,6 +290,13 @@ bool Manager::PRINT_ITEMLIST() {
 }
 
 bool Manager::PRINT_FPTREE() { // for print FPTREE
+
+	if(fpgrowth->getTree()->getChildren().empty()==true){ // if data is already insert
+		flog<<"========PRINT_FPTREE========"<<endl;
+		flog<<"ERROR 400"<<endl;
+		flog<<"============================="<<endl<<endl;
+		return true;
+	}
 	map<string, FPNode*> dataTable=fpgrowth->getHeaderTable()->getdataTable();
 	list<pair<int, string>> ThIndexTable=fpgrowth->getHeaderTable()->getThIndexTable();
 
@@ -312,13 +343,21 @@ bool Manager::PRINT_FPTREE() { // for print FPTREE
 			}
 		}
 
-	flog<<"========================="<<endl;
+	flog<<"========================="<<endl<<endl;
 }
 
 bool Manager::PRINT_BPTREE(char* item, int min_frequency) {
+
+	if(bptree->getRoot()==NULL){
+		flog<<"========PRINT_BPTREE========"<<endl;
+		flog<<"ERROR 500"<<endl;
+		flog<<"=========================="<<endl<<endl;
+		return true;
+	}
 	ofstream flog;
 	flog.open("log.txt", ofstream::app);
 	BpTreeNode* moveNode=bptree->getRoot();
+	int i=0;
 
 	map<int, FrequentPatternNode*>::iterator iter;
 	multimap<int, set<string> >::iterator frequentIter;
@@ -330,8 +369,8 @@ bool Manager::PRINT_BPTREE(char* item, int min_frequency) {
 		moveNode = moveNode->getMostLeftChild();
 	}
 	
-	flog << "====== PRINT_BPTREE ======" << endl;
-	flog <<"FrequentPattern		Frequency"<<endl;
+	flog << "========PRINT_BPTREE========" << endl;
+	
 		while (moveNode != NULL) {
 		map<int, FrequentPatternNode*> data1 = *moveNode->getDataMap();
 		for (iter=data1.begin(); iter != data1.end(); iter++) {
@@ -340,6 +379,9 @@ bool Manager::PRINT_BPTREE(char* item, int min_frequency) {
 				set<string> data3 = frequentIter->second;
 				for(stringIter=data3.begin(); stringIter!=data3.end(); stringIter++){
 					if((*stringIter==item)&&(iter->first>=min_frequency)){
+						i++;
+						if(i==1)
+							flog <<"FrequentPattern		Frequency"<<endl;
 						flog<<"{";
 						for(stringIter=data3.begin(); stringIter!=data3.end(); stringIter++){
 						if((++stringIter)--==data3.end()){
@@ -349,7 +391,6 @@ bool Manager::PRINT_BPTREE(char* item, int min_frequency) {
 					
 						flog <<*stringIter<<", ";
 						}
-						//flog<<"} "<<frequentIter->first<<endl;
 						flog<<"} "<<iter->first<<endl;
 					}
 				}
@@ -357,34 +398,23 @@ bool Manager::PRINT_BPTREE(char* item, int min_frequency) {
 		}
 		moveNode = moveNode->getNext(); //move moveNode to next
 	}
-	flog << "======================" << endl<<endl;
+	if(i==0) // there is nothing to print Frequent Pattern
+		flog<<"ERROR 500"<<endl; 
 
-	// 전체 출력 코드
-	// 	while (moveNode != NULL) {
-	// 	map<int, FrequentPatternNode*> data1 = *moveNode->getDataMap();
-	// 	for (iter=data1.begin(); iter != data1.end(); iter++) {
-	// 		multimap<int, set<string>> data2 = iter->second->getList();
-	// 		for(frequentIter=data2.begin(); frequentIter!=data2.end(); frequentIter++){
-	// 			set<string> data3 = frequentIter->second;
-	// 			flog<<"{";
-	// 			for(stringIter=data3.begin(); stringIter!=data3.end(); stringIter++){
-	// 				if((++stringIter)--==data3.end()){
-	// 					flog<<*stringIter;
-	// 					break;
-	// 				}
-	// 				flog <<*stringIter<<", ";
-	// 			}
-	// 			flog<<"} "<<frequentIter->first<<endl;
-	// 		}
-	// 	}
-	// 	moveNode = moveNode->getNext(); //move moveNode to next
-	// }
+	flog << "==========================" << endl<<endl;
 }
 
 bool Manager::PRINT_CONFIDENCE(char* item, double rate) {
 
 
 	list<pair<int, string>> indexTable = fpgrowth->getHeaderTable()->getindexTable();
+
+	if(indexTable.empty()==true||bptree->getRoot()==NULL){
+		flog<<"========PRINT_CONFIDENCE========"<<endl;
+		flog<<"ERROR 600"<<endl;
+		flog<<"=================================="<<endl<<endl;
+		return true;
+	}
 
 	int totalFrequeny=fpgrowth->getHeaderTable()->find_frequency(item);
 
@@ -394,11 +424,20 @@ bool Manager::PRINT_CONFIDENCE(char* item, double rate) {
 }
 
 bool Manager::PRINT_RANGE(char* item, int start, int end) {
+	
+	if(bptree->getRoot()==NULL){
+		flog<<"========PRINT_RANGE========"<<endl;
+		flog<<"ERROR 700"<<endl;
+		flog<<"=========================="<<endl<<endl;
+		return true;
+	}
+
 	BpTreeNode* moveNode=bptree->getRoot();
 
 	map<int, FrequentPatternNode*>::iterator iter;
 	multimap<int, set<string> >::iterator frequentIter;
 	set<string>::iterator stringIter;
+	int i=0;
 
 
 	moveNode = bptree->getRoot();
@@ -407,7 +446,7 @@ bool Manager::PRINT_RANGE(char* item, int start, int end) {
 	}
 
 	flog<<"========PRINT_RANGE========"<<endl;
-	flog<<"FrequentPattern Frequency"<<endl;
+	
 	while (moveNode != NULL) {
 		map<int, FrequentPatternNode*> data1 = *moveNode->getDataMap();
 		for (iter=data1.begin(); iter != data1.end(); iter++) {
@@ -415,17 +454,18 @@ bool Manager::PRINT_RANGE(char* item, int start, int end) {
 			for(frequentIter=data2.begin(); frequentIter!=data2.end(); frequentIter++){
 				set<string> data3 = frequentIter->second;
 				for(stringIter=data3.begin(); stringIter!=data3.end(); stringIter++){
-						if((*stringIter==item)&&((iter->first>=start)&&(iter->first<=end))){
+					if((*stringIter==item)&&((iter->first>=start)&&(iter->first<=end))){
+						i++;
+						if(i==1)
+						flog<<"FrequentPattern Frequency"<<endl;
 						flog<<"{";
 						for(stringIter=data3.begin(); stringIter!=data3.end(); stringIter++){
-						if((++stringIter)--==data3.end()){
-							flog<<*stringIter;
-							break;
+							if((++stringIter)--==data3.end()){
+								flog<<*stringIter;
+								break;
+							}
+							flog <<*stringIter<<", ";
 						}
-					
-						flog <<*stringIter<<", ";
-						}
-						//flog<<"} "<<frequentIter->first<<endl;
 						flog<<"} "<<iter->first<<endl;
 					}
 				}
@@ -433,12 +473,15 @@ bool Manager::PRINT_RANGE(char* item, int start, int end) {
 		}
 		moveNode = moveNode->getNext(); //move moveNode to next
 	}
-	flog<<"============================="<<endl;
+	if(i==0) // there is nothing to print Frequent Pattern
+		flog<<"ERROR 700"<<endl; 
+
+	flog<<"============================="<<endl<<endl;
 }
 
 void Manager::printErrorCode(string command, int code) {				//ERROR CODE PRINT
 	flog << "ERROR " << code << endl;
-	flog << "=======================" << endl;
+	flog << "=======================" << endl << endl;
 }
 
 void Manager::printSuccessCode() {//SUCCESS CODE PRINT 

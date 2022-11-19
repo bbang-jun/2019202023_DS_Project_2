@@ -12,9 +12,7 @@ public:
 		pParent = NULL;
 		pMostLeftChild = NULL;
 	}
-	~BpTreeNode() {
-
-	}
+	~BpTreeNode() {}
 
 	void setMostLeftChild(BpTreeNode* pN) { pMostLeftChild = pN; }
 	void setParent(BpTreeNode* pN) { pParent = pN; }
