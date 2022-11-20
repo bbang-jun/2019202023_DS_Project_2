@@ -1,12 +1,12 @@
-=========LOAD=========
+========LOAD========
 Success
-=======================
+====================
 
-========BTLOAD=======
+========BTLOAD========
 Success
-=======================
+====================
 
-====PRINT_ITEMLIST===
+========PRINT_ITEMLIST========
 Item Frequency
 mineral water 1042
 eggs 792
@@ -123,10 +123,10 @@ bramble 6
 napkins 3
 water spray 2
 cream 2
-energy bar asparagus 1
-=======================
+energy bar  asparagus 1
+===============================
 
-=====PRINT_FPTREE=====
+========PRINT_FPTREE========
 {StandardItem,Frequency} (Path_Item,Frequency)
 {milk, 578}
 (milk, 8) (green tea, 52) (mineral water, 1042) 
@@ -253,9 +253,9 @@ energy bar asparagus 1
 (eggs, 248) (mineral water, 1042) 
 {mineral water, 1042}
 (mineral water, 1042) 
-=======================
+=========================
 
-=====PRINT_BPTREE=====
+========PRINT_BPTREE========
 FrequentPattern Frequency
 {antioxydant juice, milk} 5
 {candy bars, milk} 5
@@ -1076,9 +1076,9 @@ FrequentPattern Frequency
 {eggs, milk} 145
 {milk, spaghetti} 156
 {milk, mineral water} 224
-=======================
+==========================
 
-=====PRINT_CONFIDENCE=====
+========PRINT_CONFIDENCE========
 FrequentPattern Frequency Confidence
 {frozen vegetables, milk} 105 0.181661
 {french fries, milk} 128 0.221453
@@ -1086,9 +1086,9 @@ FrequentPattern Frequency Confidence
 {eggs, milk} 145 0.250865
 {milk, spaghetti} 156 0.269896
 {milk, mineral water} 224 0.387543
-=======================
+=================================
 
-========PRINT_RANGE=======
+========PRINT_RANGE========
 FrequentPattern Frequency
 {cereals, milk} 29
 {eggs, frozen vegetables, milk} 29
@@ -1130,9 +1130,8 @@ FrequentPattern Frequency
 {chocolate, milk, mineral water} 68
 {milk, pancakes} 69
 {milk, mineral water, spaghetti} 69
-=======================
+=============================
 
-===========EXIT===========
+=======EXIT========
 Success
-=======================
-
+===================
