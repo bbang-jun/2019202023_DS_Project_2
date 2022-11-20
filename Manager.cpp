@@ -7,7 +7,11 @@ void Manager::run(const char* command) // execute all command
 	flog.open("log.txt", ios::app);
 	if(!fin) // if file is not open
 	{
-		flog << "File Open Error" << endl;
+		ofstream fileMake("command.txt"); // if file is not exist, make file
+		if(fileMake.is_open()){
+			fileMake.close();
+		}
+		fin.open("command.txt");
 		return;
 	}
 	while (!fin.eof()) // until end of file
@@ -121,6 +125,11 @@ bool Manager::LOAD() // read market.txt and make FPGrowth Tree
 	market_txt.open("market.txt", ios::app); // open the file market.txt
 
 	if(!market_txt){ // if file is not open, print the ERROR 100
+		ofstream fileMake("market.txt"); // if file is not exist, make file
+		if(fileMake.is_open()){
+			fileMake.close();
+		}
+		market_txt.open("market.txt");
 		flog<<"========LOAD========"<<endl;
 		flog<<"ERROR 100"<<endl;
 		flog<<"===================="<<endl<<endl;
@@ -176,6 +185,11 @@ bool Manager::LOAD() // read market.txt and make FPGrowth Tree
 	market_txt.open("market.txt", ios::app); // reopen market.txt file
 
 	if(!market_txt){ // if file is not open, print the ERROR 100
+		ofstream fileMake("market.txt"); // if file is not exist, make file
+		if(fileMake.is_open()){
+			fileMake.close();
+		}
+		market_txt.open("market.txt");
 		flog<<"========LOAD========"<<endl;
 		flog<<"ERROR 100"<<endl;
 		flog<<"===================="<<endl<<endl;
@@ -253,6 +267,11 @@ bool Manager::BTLOAD() // read result.txt and make B+-Tree
 	result_txt.open("result.txt", ios::app); // open the result.txt file
 
 	if(!result_txt){ // if result.txt file is not open, print the ERROR 200
+		ofstream fileMake("result.txt");// if file is not exist, make file
+		if(fileMake.is_open()){
+			fileMake.close();
+		}
+		result_txt.open("result.txt");
 		flog<<"========BTLOAD========"<<endl;
 		flog<<"ERROR 200"<<endl;
 		flog<<"===================="<<endl<<endl;
