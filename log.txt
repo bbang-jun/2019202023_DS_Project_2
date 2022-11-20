@@ -7,12 +7,12 @@ Success
 ====================
 
 ========PRINT_ITEMLIST========
-Item   Frequency
+Item Frequency
 mineral water 1042
 eggs 792
 french fries 765
 spaghetti 757
-chocolate 723
+chocolate 722
 green tea 647
 milk 578
 frozen vegetables 464
@@ -41,9 +41,9 @@ cottage cheese 150
 avocado 150
 hot dogs 146
 tomato juice 138
-ham 133
 vegetables mix 130
 red wine 130
+ham 129
 light mayo 127
 pepper 126
 energy bar 120
@@ -217,7 +217,7 @@ energy bar  asparagus 1
 (green tea, 2) (chocolate, 8) (spaghetti, 25) (french fries, 166) (eggs, 544) 
 (green tea, 1) (spaghetti, 13) (french fries, 33) (eggs, 248) (mineral water, 1042) 
 (green tea, 1) (chocolate, 11) (spaghetti, 44) (eggs, 248) (mineral water, 1042) 
-{chocolate, 723}
+{chocolate, 722}
 (chocolate, 45) (eggs, 544) 
 (chocolate, 5) (french fries, 33) (eggs, 248) (mineral water, 1042) 
 (chocolate, 39) (eggs, 248) (mineral water, 1042) 
@@ -256,7 +256,7 @@ energy bar  asparagus 1
 =========================
 
 ========PRINT_BPTREE========
-FrequentPattern		Frequency
+FrequentPattern Frequency
 {antioxydant juice, milk} 5
 {candy bars, milk} 5
 {dessert wine, milk} 5
@@ -1079,7 +1079,7 @@ FrequentPattern		Frequency
 ==========================
 
 ========PRINT_CONFIDENCE========
-FrequentPattern Frequency	Confidence
+FrequentPattern Frequency Confidence
 {frozen vegetables, milk} 105 0.181661
 {french fries, milk} 128 0.221453
 {chocolate, milk} 143 0.247405

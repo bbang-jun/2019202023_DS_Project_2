@@ -117,7 +117,6 @@ bool Manager::LOAD() // read market.txt and make FPGrowth Tree
 	int tempFrequency;
 	list<string>::iterator cmpIter;
 	list<pair<int, string>>::iterator iter;
-	bool judge=true;
 
 	market_txt.open("market.txt", ios::app); // open the file market.txt
 
@@ -154,17 +153,13 @@ bool Manager::LOAD() // read market.txt and make FPGrowth Tree
 
 				for(cmpIter=tempList.begin(); cmpIter!=tempList.end(); cmpIter++){
 					if(charItem==*cmpIter){
-						judge=false;
-						break;
+						charItem=strtok(NULL, "\t");
+						if(charItem==NULL)
+							break;
 					}
 				}
-
-				if(judge=false){
-					charItem=strtok(NULL, "\t");
-					judge=true;
-					if(charItem==NULL)
-						break;
-				}
+				if(charItem==NULL)
+					break;
 				else{
 					tempFrequency = fpgrowth->getHeaderTable()->find_frequency(charItem); // for renew of frequency
 					fpgrowth->createTable(charItem, tempFrequency); // create the indexTable
@@ -310,7 +305,7 @@ bool Manager::PRINT_ITEMLIST() { // print indexTable
 		return true;
 	}
 	flog<<"========PRINT_ITEMLIST========"<<endl;
-	flog<<"Item   Frequency"<<endl;
+	flog<<"Item Frequency"<<endl;
 	fpgrowth->getHeaderTable()->descendingIndexTable(); // adpat descending to indexTable
 	fpgrowth->getHeaderTable()->PRINT_ITEMLIST(); // print indexTable
 	flog<<"==============================="<<endl<<endl;
@@ -413,7 +408,7 @@ bool Manager::PRINT_BPTREE(char* item, int min_frequency) { // print the B+-tree
 					if((*stringIter==item)&&(iter->first>=min_frequency)){
 						i++;
 						if(i==1) // print only once
-							flog <<"FrequentPattern		Frequency"<<endl;
+							flog <<"FrequentPattern Frequency"<<endl;
 						flog<<"{";
 						for(stringIter=stringIterData.begin(); stringIter!=stringIterData.end(); stringIter++){
 						if((++stringIter)--==stringIterData.end()){ // compare index for find item name
@@ -439,7 +434,6 @@ bool Manager::PRINT_BPTREE(char* item, int min_frequency) { // print the B+-tree
 }
 
 bool Manager::PRINT_CONFIDENCE(char* item, double rate) { // print same or bigger confidence
-
 
 	list<pair<int, string>> indexTable = fpgrowth->getHeaderTable()->getindexTable(); // get indexTable for check emtpy
 

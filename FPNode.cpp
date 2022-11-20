@@ -7,10 +7,7 @@ FPNode::FPNode()	// constructor
 	frequency = 0;
 }
 
-
 FPNode::~FPNode(){} // destructor
-
-
 
 FPNode* FPNode::getChildrenNode(string item) { // find children node, and return find node
 	map<string, FPNode*>::iterator it = children.find(item);
